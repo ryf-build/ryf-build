@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="180" viewBox="0 0 1120 180">
-<rect width="1120" height="180" rx="22" fill="#0b0d10"/><rect x="1" y="1" width="1118" height="178" rx="21" fill="none" stroke="#2b3138"/>
-<text x="34" y="42" fill="#6f7782" font-size="12" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2.2">WRITING / PRACTICAL ENGINEERING</text>
-<text x="34" y="88" fill="#f4f4f5" font-size="27" font-weight="800" font-family="Segoe UI,Arial,sans-serif">1台のWindows PCをAI開発チームにする</text>
-<text x="34" y="128" fill="#b7bec8" font-size="16" font-family="Segoe UI,Arial,sans-serif">GitHub · self-hosted runners · automation · QA · human-controlled AI workflows</text>
-<text x="34" y="155" fill="#d7b76a" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif">COMPANION → windows-ai-dev-team</text>
-</svg>
