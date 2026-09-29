@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="210" viewBox="0 0 560 210"><rect width="560" height="210" rx="24" fill="#0d1117"/><rect x="1" y="1" width="558" height="208" rx="23" fill="none" stroke="#30363d"/><circle cx="49" cy="48" r="14" fill="#58a6ff"/><text x="80" y="58" fill="#f0f6fc" font-size="24" font-weight="700" font-family="Segoe UI,Arial,sans-serif">ryf-labs</text><text x="32" y="105" fill="#c9d1d9" font-size="18" font-family="Segoe UI,Arial,sans-serif">Small experiments in developer tooling,</text><text x="32" y="133" fill="#c9d1d9" font-size="18" font-family="Segoe UI,Arial,sans-serif">automation, and AI-assisted engineering.</text><text x="32" y="178" fill="#8b949e" font-size="15" font-family="Segoe UI,Arial,sans-serif">Tools · Automation · Prototypes · Experiments</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="210" viewBox="0 0 560 210" role="img" aria-label="Knight — ryf-labs">
+<rect width="560" height="210" rx="24" fill="#0d1117"/><rect x="1" y="1" width="558" height="208" rx="23" fill="none" stroke="#30363d"/>
+<text x="34" y="64" fill="#58a6ff" font-size="42" font-family="Segoe UI Symbol, Segoe UI, Arial, sans-serif">♞</text>
+<text x="86" y="48" fill="#8b949e" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2">KNIGHT · EXPERIMENTS</text>
+<text x="86" y="76" fill="#f0f6fc" font-size="22" font-weight="700" font-family="Segoe UI,Arial,sans-serif">RYF LABS</text>
+<text x="32" y="120" fill="#c9d1d9" font-size="17" font-family="Segoe UI,Arial,sans-serif">Small experiments in developer tooling,</text>
+<text x="32" y="146" fill="#c9d1d9" font-size="17" font-family="Segoe UI,Arial,sans-serif">automation, and AI-assisted engineering.</text>
+<text x="32" y="184" fill="#8b949e" font-size="14" font-family="Segoe UI,Arial,sans-serif">Tools · Automation · Prototypes · Experiments</text>
+</svg>
