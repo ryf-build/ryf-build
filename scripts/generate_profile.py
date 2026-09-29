@@ -119,133 +119,90 @@ def svg_shell(body, width, height, title):
 {body}
 </svg>"""
 
+
 def hero(profile):
-    latest = next((r["name"] for r in profile["repos"] if r["name"] != USER), "public-work")
+    updated = NOW.strftime("%Y-%m-%d %H:%M UTC")
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="482" viewBox="0 0 1120 482" role="img">
+<title>RYF chess strategy hero</title>
+<defs>
+  <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#d8b86a" stop-opacity="0"/>
+    <stop offset=".5" stop-color="#f2d58b" stop-opacity=".22"/>
+    <stop offset="1" stop-color="#d8b86a" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="blur" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="7"/>
+  </filter>
+</defs>
+<rect width="1120" height="482" rx="28" fill="#07090d"/>
+<image href="../chess-hero.jpg" x="0" y="0" width="1120" height="482" preserveAspectRatio="xMidYMid slice"/>
+<rect x="1" y="1" width="1118" height="480" rx="27" fill="none" stroke="#2a2d31"/>
 
-    board = []
-    x0, y0, w, h = 674, 300, 400, 70
-    cols, rows = 8, 4
-    cw, rh = w / cols, h / rows
-    for r in range(rows):
-        for c in range(cols):
-            fill = "#10151b" if (r+c) % 2 == 0 else "#0b0f14"
-            board.append(
-                f'<polygon points="{x0+c*cw},{y0+r*rh} {x0+(c+1)*cw},{y0+r*rh} {x0+(c+1)*cw+18},{y0+(r+1)*rh} {x0+c*cw+18},{y0+(r+1)*rh}" fill="{fill}" stroke="{C["grid"]}" stroke-width=".45"/>'
-            )
-
-    particles = []
-    for i in range(72):
-        t = i / 71
-        # king silhouette: crown/neck/body/base
-        if t < .17:
-            yy = 74 + t/.17 * 54
-            half = 28 + 18 * math.sin(t/.17 * math.pi)
-        elif t < .34:
-            yy = 128 + (t-.17)/.17 * 46
-            half = 36 - 8 * ((t-.17)/.17)
-        elif t < .82:
-            yy = 174 + (t-.34)/.48 * 116
-            p = (t-.34)/.48
-            half = 30 + 68 * (p ** 1.45)
-        else:
-            yy = 290 + (t-.82)/.18 * 48
-            p = (t-.82)/.18
-            half = 98 + 34 * math.sin(p * math.pi)
-        side = -1 if i % 2 == 0 else 1
-        jitter = ((i * 17) % 13 - 6) * 1.15
-        xx = 902 + side * (half + jitter)
-        color = C["gold2"] if i % 5 < 3 else C["purple2"]
-        r = 1.2 + (i % 4) * .35
-        particles.append(
-            f'<circle cx="{xx:.1f}" cy="{yy:.1f}" r="{r:.2f}" fill="{color}" opacity=".62">'
-            f'<animate attributeName="opacity" values=".18;.9;.18" dur="{2.4+(i%7)*.31:.2f}s" begin="-{i*.08:.2f}s" repeatCount="indefinite"/>'
-            f'</circle>'
-        )
-
-    # king outline and cross
-    king_path = "M902 73 L902 101 M888 87 H916 M873 122 Q902 107 931 122 L923 146 Q902 156 881 146 Z M882 153 Q902 164 922 153 L916 184 Q902 191 888 184 Z M889 186 C880 222 852 270 826 302 H978 C952 270 924 222 915 186 Z M818 301 Q902 286 986 301 L972 338 H832 Z"
-
-    orbits = [
-        (902, 190, 184, 52, 8, 18, C["gold"]),
-        (902, 190, 164, 74, 43, 23, C["purple"]),
-        (902, 190, 138, 90, 81, 28, C["green"]),
-    ]
-    orbit_svg = []
-    for cx,cy,rx,ry,a,dur,color in orbits:
-        orbit_svg.append(
-            f'<g transform="rotate({a} {cx} {cy})">'
-            f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{color}" stroke-width="1.2" opacity=".25"/>'
-            f'<circle cx="{cx+rx}" cy="{cy}" r="4" fill="{color}" filter="url(#soft)"/>'
-            f'<animateTransform attributeName="transform" type="rotate" values="{a} {cx} {cy};{a+360} {cx} {cy}" dur="{dur}s" repeatCount="indefinite"/>'
-            f'</g>'
-        )
-
-    labels = [
-        (648, 76, "STRATEGY", "BUILDS OPTIONS"),
-        (988, 104, "SYSTEMS", "CREATE LEVERAGE"),
-        (974, 218, "EXECUTION", "TURNS IDEAS INTO REALITY"),
-    ]
-    label_svg = []
-    for x,y,a,b in labels:
-        label_svg.append(
-            f'<text x="{x}" y="{y}" fill="{C["gold2"]}" font-size="11" font-weight="800" font-family="Georgia, serif" letter-spacing="1.5">{a}</text>'
-            f'<text x="{x}" y="{y+16}" fill="{C["muted"]}" font-size="9.5" font-family="Segoe UI" letter-spacing="1.1">{b}</text>'
-        )
-
-    pills = ["AI AGENTS","AUTOMATION","INFRASTRUCTURE","VERIFICATION","OPEN SOURCE","AI WORKFLOWS","WINDOWS","SYSTEMS"]
-    pill_svg = []
-    for i, p in enumerate(pills):
-        row = i // 4
-        col = i % 4
-        x = 54 + col * 126
-        y = 294 + row * 42
-        pill_svg.append(
-            f'<rect x="{x}" y="{y}" width="112" height="29" rx="14.5" fill="#0c1117" stroke="{C["gold"]}" stroke-opacity=".55"/>'
-            f'<text x="{x+56}" y="{y+19}" text-anchor="middle" fill="{C["sub"]}" font-size="10.2" font-family="Segoe UI">{p}</text>'
-        )
-
-    files = ''.join(
-        f'<text x="{700+i*46}" y="393" fill="{C["muted"]}" font-size="9" font-family="monospace">{chr(65+i)}</text>'
-        for i in range(8)
-    )
-
-    body = f"""
-<text x="54" y="54" fill="{C['muted']}" font-size="11" font-weight="700" font-family="Segoe UI" letter-spacing="2.4">RYF / CHESS SYSTEM</text>
-<text x="52" y="134" fill="url(#gold)" font-size="74" font-weight="800" font-family="Georgia, serif" letter-spacing="3">RYF</text>
-<text x="54" y="177" fill="{C['gold2']}" font-size="22" font-weight="700" font-family="Georgia, serif" letter-spacing="1.2">AI-NATIVE PRODUCT BUILDER</text>
-<text x="54" y="210" fill="{C['text']}" font-size="17" font-family="Georgia, serif" letter-spacing="2.2">STRATEGY · SYSTEMS · EXECUTION</text>
-<text x="54" y="245" fill="{C['sub']}" font-size="15.5" font-family="Segoe UI">Building software, automation, and engineering systems with AI.</text>
-<text x="54" y="269" fill="{C['muted']}" font-size="11.5" font-family="Segoe UI">Make the move deliberate. Build the position. Verify the result.</text>
-{''.join(pill_svg)}
-
-<g opacity=".38">{''.join(board)}</g>
-{files}
-
-<text x="792" y="240" fill="{C['purple']}" font-size="150" font-family="Georgia, serif" opacity=".08">♞</text>
-<circle cx="902" cy="198" r="198" fill="url(#glow)"/>
-{''.join(orbit_svg)}
-<path d="{king_path}" fill="none" stroke="url(#gold)" stroke-width="2.4" opacity=".82"/>
-<path d="{king_path}" fill="none" stroke="{C['gold2']}" stroke-width="8" opacity=".08" filter="url(#blur)"/>
-{''.join(particles)}
-{''.join(label_svg)}
-
-<line x1="640" y1="56" x2="640" y2="366" stroke="{C['grid']}" stroke-width=".8"/>
-<line x1="651" y1="60" x2="651" y2="366" stroke="{C['grid']}" stroke-width=".45"/>
-
-<rect x="645" y="55" width="28" height="312" fill="{C['gold']}" opacity=".04">
-  <animate attributeName="x" values="645;1070;645" dur="6.8s" repeatCount="indefinite"/>
+<!-- moving light over the king / board -->
+<rect x="560" y="20" width="72" height="430" fill="url(#scan)" filter="url(#blur)" opacity=".75">
+  <animate attributeName="x" values="560;1040;560" dur="7.4s" repeatCount="indefinite"/>
 </rect>
 
-<circle cx="670" cy="352" r="3" fill="{C['green']}">
-  <animate attributeName="cx" values="670;1058;670" dur="5.6s" repeatCount="indefinite"/>
-  <animate attributeName="fill" values="{C['gold']};{C['purple']};{C['green']};{C['gold']}" dur="5.6s" repeatCount="indefinite"/>
-</circle>
+<!-- orbit tracers -->
+<g transform="rotate(8 825 245)">
+  <ellipse cx="825" cy="245" rx="205" ry="62" fill="none" stroke="#d8b86a" stroke-width="1.4" opacity=".28"/>
+  <circle cx="1030" cy="245" r="4.2" fill="#f2d58b" filter="url(#blur)"/>
+  <animateTransform attributeName="transform" type="rotate" values="8 825 245;368 825 245" dur="18s" repeatCount="indefinite"/>
+</g>
+<g transform="rotate(48 825 245)">
+  <ellipse cx="825" cy="245" rx="178" ry="80" fill="none" stroke="#9b87ff" stroke-width="1.2" opacity=".22"/>
+  <circle cx="1003" cy="245" r="3.8" fill="#c4b5fd"/>
+  <animateTransform attributeName="transform" type="rotate" values="48 825 245;-312 825 245" dur="24s" repeatCount="indefinite"/>
+</g>
+<g transform="rotate(82 825 245)">
+  <ellipse cx="825" cy="245" rx="152" ry="97" fill="none" stroke="#48e59b" stroke-width="1.1" opacity=".18"/>
+  <circle cx="977" cy="245" r="3.4" fill="#48e59b"/>
+  <animateTransform attributeName="transform" type="rotate" values="82 825 245;442 825 245" dur="29s" repeatCount="indefinite"/>
+</g>
 
-<text x="54" y="402" fill="{C['muted']}" font-size="9.5" font-family="monospace">latest public work / {esc(latest)} · refreshed {NOW.strftime('%Y-%m-%d %H:%M UTC')}</text>
-"""
-    return svg_shell(body, 1120, 430, "RYF chess system hero")
+<!-- tactical nodes -->
+<g>
+  <circle cx="760" cy="178" r="4" fill="#d8b86a">
+    <animate attributeName="r" values="2.5;7;2.5" dur="2.7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".35;1;.35" dur="2.7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="905" cy="132" r="4" fill="#9b87ff">
+    <animate attributeName="r" values="2.5;6.5;2.5" dur="3.1s" begin="-1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".3;1;.3" dur="3.1s" begin="-1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="988" cy="278" r="4" fill="#48e59b">
+    <animate attributeName="r" values="2.5;7;2.5" dur="3.6s" begin="-1.7s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".3;1;.3" dur="3.6s" begin="-1.7s" repeatCount="indefinite"/>
+  </circle>
+</g>
+
+<!-- board signal -->
+<circle cx="620" cy="448" r="3.2" fill="#f2d58b">
+  <animate attributeName="cx" values="620;1050;620" dur="6.2s" repeatCount="indefinite"/>
+  <animate attributeName="fill" values="#f2d58b;#9b87ff;#48e59b;#f2d58b" dur="6.2s" repeatCount="indefinite"/>
+</circle>
+<text x="22" y="468" fill="#7d8590" font-size="9.5" font-family="monospace">animated profile system · refreshed {updated}</text>
+</svg>"""
+
+def about(profile):
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="180" viewBox="0 0 1120 180" role="img">
+<title>RYF opening and about</title>
+<rect width="1120" height="180" rx="22" fill="#07090d"/>
+<rect x="1" y="1" width="1118" height="178" rx="21" fill="none" stroke="#242a32"/>
+<text x="30" y="38" fill="#f2d58b" font-size="18" font-weight="700" font-family="Georgia, serif">♞  Opening / About</text>
+<text x="30" y="76" fill="#f4f7fb" font-size="14.5" font-family="Segoe UI">I'm Ryf, an AI-native product builder.</text>
+<text x="30" y="102" fill="#b7bec8" font-size="13.5" font-family="Segoe UI">I build software, automation, and engineering systems with AI.</text>
+<text x="30" y="126" fill="#b7bec8" font-size="13.5" font-family="Segoe UI">Public repositories contain reusable tools and experiments; private product and production systems remain private.</text>
+<text x="30" y="150" fill="#6f7782" font-size="12" font-family="Segoe UI">The goal: turn ideas into practical systems that improve development, operations, and everyday work.</text>
+<line x1="824" y1="48" x2="824" y2="144" stroke="#d8b86a" stroke-width="2"/>
+<text x="854" y="82" fill="#d8b86a" font-size="34" font-family="Georgia, serif">“</text>
+<text x="872" y="97" fill="#f4f7fb" font-size="18" font-family="Georgia, serif">A better position</text>
+<text x="872" y="124" fill="#f4f7fb" font-size="18" font-family="Georgia, serif">tomorrow.</text>
+<text x="1043" y="146" fill="#d8b86a" font-size="34" font-family="Georgia, serif">”</text>
+</svg>"""
 
 def capability():
+
     cx, cy, radius = 280, 185, 112
     labels = [
         ("SYSTEM DESIGN", -90),
@@ -295,7 +252,7 @@ def capability():
         )
 
     caps = [
-        ("AI & AGENTS", "CORE", C["purple"]),
+        ("AI / AGENTS", "CORE", C["purple"]),
         ("NODE.JS", "CORE", C["green"]),
         ("POWERSHELL", "CORE", C["blue"]),
         ("AUTOMATION", "CORE", C["gold"]),
@@ -374,7 +331,7 @@ def signals(profile):
     signals = [
         ("PUBLIC REPOS", str(public_repos), "Open public surface", C["green"]),
         ("AUTOMATION", "ACTIVE", "6-hour profile refresh", C["purple"]),
-        ("PUBLIC EXPERIMENTS", str(experiments), "Reusable ideas & tools", C["gold"]),
+        ("PUBLIC EXPERIMENTS", str(experiments), "Reusable ideas + tools", C["gold"]),
         ("WRITING", "1", "Practical engineering", C["blue"]),
         ("VERIFICATION", "BUILT IN", "Review · test · evidence", C["green"]),
     ]
@@ -463,6 +420,7 @@ def main():
         path.unlink()
 
     (OUT / "hero.svg").write_text(hero(profile), encoding="utf-8")
+    (OUT / "about.svg").write_text(about(profile), encoding="utf-8")
     (OUT / "capability.svg").write_text(capability(), encoding="utf-8")
     (OUT / "toolchain.svg").write_text(toolchain(), encoding="utf-8")
     (OUT / "signals.svg").write_text(signals(profile), encoding="utf-8")
