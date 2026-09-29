@@ -2,35 +2,94 @@
   "user": {
     "login": "ryf-build",
     "name": "Ryf",
-    "bio": "AI-native product builder.\r\nBuilding software, automation, and\r\nengineering systems with AI."
+    "bio": "AI-native product builder.\r\nBuilding software, automation, and\r\nengineering systems with AI.",
+    "public_repos": 4
   },
   "repos": [
     {
       "name": "ryf-build",
       "description": "AI-native product builder. Systems, tools, and practical engineering workflows.",
       "language": "Python",
-      "pushed_at": "2026-09-29T10:55:30Z"
+      "stars": 0,
+      "forks": 0,
+      "pushed_at": "2026-09-29T11:18:44Z"
+    },
+    {
+      "name": "ai-development-playbook",
+      "description": "Practical patterns for AI-native software delivery, review, QA, and automation.",
+      "language": "Python",
+      "stars": 0,
+      "forks": 0,
+      "pushed_at": "2026-09-29T11:03:27Z"
     },
     {
       "name": "ryf-labs",
       "description": "Small public experiments in developer tooling, automation, and AI-assisted engineering.",
       "language": "",
+      "stars": 0,
+      "forks": 0,
       "pushed_at": "2026-09-29T07:10:40Z"
-    },
-    {
-      "name": "ai-development-playbook",
-      "description": "Practical patterns for AI-native software delivery, review, QA, and automation.",
-      "language": "",
-      "pushed_at": "2026-09-29T07:10:36Z"
     },
     {
       "name": "windows-ai-dev-team",
       "description": "Turn one Windows PC into an AI-assisted development team.",
       "language": "",
+      "stars": 0,
+      "forks": 0,
       "pushed_at": "2026-09-29T07:10:30Z"
     }
   ],
   "events": [
+    {
+      "type": "PullRequestEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:03:27Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:03:29Z"
+    },
+    {
+      "type": "PullRequestEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:03:20Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:03:12Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:03:09Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:02:19Z"
+    },
+    {
+      "type": "CreateEvent",
+      "repo": "ai-development-playbook",
+      "created_at": "2026-09-29T11:01:22Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:56:32Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:56:27Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:56:25Z"
+    },
     {
       "type": "PushEvent",
       "repo": "ryf-build",
@@ -87,6 +146,6 @@
       "created_at": "2026-09-29T10:23:49Z"
     }
   ],
-  "generated_at": "2026-09-29T10:55:38.656598+00:00",
+  "generated_at": "2026-09-29T11:18:53.644619+00:00",
   "scope": "public-only"
 }

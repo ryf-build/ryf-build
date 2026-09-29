@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="190" viewBox="0 0 350 190" role="img">
+<title>ai-development-playbook</title>
+<defs>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#d8b86a"/>
+    <stop offset=".55" stop-color="#f2d58b"/>
+    <stop offset="1" stop-color="#d8b86a"/>
+  </linearGradient>
+  <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#c4b5fd"/>
+    <stop offset="1" stop-color="#9b87ff"/>
+  </linearGradient>
+  <linearGradient id="system" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#9b87ff"/>
+    <stop offset=".5" stop-color="#d8b86a"/>
+    <stop offset="1" stop-color="#48e59b"/>
+  </linearGradient>
+  <radialGradient id="glow">
+    <stop offset="0" stop-color="#f2d58b" stop-opacity=".18"/>
+    <stop offset=".55" stop-color="#9b87ff" stop-opacity=".06"/>
+    <stop offset="1" stop-color="#07090d" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="blur" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="7"/>
+  </filter>
+  <filter id="soft" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+</defs>
+<rect width="350" height="190" rx="28" fill="#07090d"/>
+<rect x="1" y="1" width="348" height="188" rx="27" fill="none" stroke="#242a32"/>
+
+<text x="18" y="31" fill="#9b87ff" font-size="10.5" font-weight="800" font-family="monospace">SELECTED LINE / PUBLIC</text>
+<text x="18" y="66" fill="#f4f7fb" font-size="17" font-weight="800" font-family="Segoe UI">ai-development-playbook</text>
+<text x="18" y="97" fill="#b7bec8" font-size="11" font-family="Segoe UI">Practical patterns for AI-native software delivery, review</text>
+<text x="18" y="115" fill="#b7bec8" font-size="11" font-family="Segoe UI">, QA, and automation.</text>
+<rect x="18" y="144" width="30.6" height="25" rx="12.5" fill="#111720" stroke="#242a32"/><text x="33.3" y="161" text-anchor="middle" fill="#6f7782" font-size="9.5" font-family="Segoe UI">AI</text><rect x="56.6" y="144" width="43.2" height="25" rx="12.5" fill="#111720" stroke="#242a32"/><text x="78.2" y="161" text-anchor="middle" fill="#6f7782" font-size="9.5" font-family="Segoe UI">Docs</text><rect x="107.80000000000001" y="144" width="87.3" height="25" rx="12.5" fill="#111720" stroke="#242a32"/><text x="151.5" y="161" text-anchor="middle" fill="#6f7782" font-size="9.5" font-family="Segoe UI">Development</text>
+<circle cx="320" cy="30" r="4" fill="#9b87ff">
+  <animate attributeName="r" values="3;6;3" dur="2.6s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values=".35;1;.35" dur="2.6s" repeatCount="indefinite"/>
+</circle>
+
+</svg>
