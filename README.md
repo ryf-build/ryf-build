@@ -1,22 +1,16 @@
 <img src="./assets/generated/hud.svg" alt="RYF live system HUD" width="100%">
 
 <p align="center">
-  <sub>Live visuals are generated from public GitHub data only. Private product and production repositories stay private.</sub>
+  <sub>Live visuals use public GitHub data only. Private product and production repositories stay private.</sub>
 </p>
 
 ## Live system
 
-<img src="./assets/generated/skyline.svg" alt="Public activity terrain" width="100%">
+<img src="./assets/generated/field.svg" alt="Generative public activity field" width="100%">
 
-<p>
-  <img src="./assets/generated/heatmap.svg" alt="Public activity heatmap" width="58%">
-  <img src="./assets/generated/terminal.svg" alt="Live terminal profile" width="40%">
-</p>
+<img src="./assets/generated/terminal.svg" alt="Public system console" width="100%">
 
-<p>
-  <img src="./assets/generated/activity.svg" alt="Recent public GitHub activity" width="39%">
-  <img src="./assets/generated/signal.svg" alt="Issue-driven visitor signal" width="58%">
-</p>
+<img src="./assets/generated/signal.svg" alt="Issue-driven visitor signal" width="100%">
 
 <p align="center">
   <strong>MOVE THE SIGNAL</strong><br>
@@ -30,7 +24,7 @@
 </p>
 
 <p align="center">
-  <sub>Each move opens a public GitHub issue. A bounded Action accepts only A1, C3, F5, or H7, updates the board, then closes the issue.</sub>
+  <sub>Each move opens a public Issue. A bounded Action accepts only A1, C3, F5, or H7, updates the signal, then closes the Issue.</sub>
 </p>
 
 ## Selected work
@@ -58,5 +52,5 @@
 
 <p align="center">
   <strong>THINK AHEAD · BUILD DELIBERATELY · VERIFY WHAT MATTERS</strong><br>
-  <sub>Profile telemetry refreshes every 6 hours and can also be regenerated manually.</sub>
+  <sub>Public telemetry refreshes every 6 hours.</sub>
 </p>
