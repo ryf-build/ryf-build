@@ -1,12 +1,6 @@
 <img src="./assets/generated/hero.svg" alt="RYF — AI-native product builder, chess strategy system" width="100%">
 
-## ♞ Opening / About
-
-I'm **Ryf**, an AI-native product builder.  
-I build software, automation, and engineering systems with AI.  
-Public repositories contain reusable tools, experiments, and engineering ideas; private product and production systems stay private.
-
-> **A better position tomorrow.**
+<img src="./assets/generated/about.svg" alt="Opening — About Ryf" width="100%">
 
 <img src="./assets/generated/capability.svg" alt="Board Control — Technical Capability" width="100%">
 
@@ -28,12 +22,10 @@ Public repositories contain reusable tools, experiments, and engineering ideas; 
   </a>
 </p>
 
-## ♜ Endgame / Writing
-
 <a href="https://github.com/ryf-build/windows-ai-dev-team">
-  <img src="./assets/generated/writing.svg" alt="1台のWindows PCをAI開発チームにする" width="100%">
+  <img src="./assets/generated/writing.svg" alt="Endgame / Writing — 1台のWindows PCをAI開発チームにする" width="100%">
 </a>
 
 <p align="center">
-  <sub>Animated SVG profile system · refreshed every 6 hours from public GitHub metadata only.</sub>
+  <sub>Animated Chess profile · refreshed every 6 hours from public GitHub metadata only.</sub>
 </p>
