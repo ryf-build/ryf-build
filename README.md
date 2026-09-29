@@ -1,11 +1,36 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hero-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/hero-light.svg">
-  <img alt="RYF — AI-native product builder" src="./assets/hero-dark.svg" width="100%">
-</picture>
+<img src="./assets/generated/hud.svg" alt="RYF live system HUD" width="100%">
 
 <p align="center">
-  <sub>Production stays private. Public work focuses on reusable ideas, tools, and experiments.</sub>
+  <sub>Live visuals are generated from public GitHub data only. Private product and production repositories stay private.</sub>
+</p>
+
+## Live system
+
+<img src="./assets/generated/skyline.svg" alt="Public activity terrain" width="100%">
+
+<p>
+  <img src="./assets/generated/heatmap.svg" alt="Public activity heatmap" width="58%">
+  <img src="./assets/generated/terminal.svg" alt="Live terminal profile" width="40%">
+</p>
+
+<p>
+  <img src="./assets/generated/activity.svg" alt="Recent public GitHub activity" width="39%">
+  <img src="./assets/generated/signal.svg" alt="Issue-driven visitor signal" width="58%">
+</p>
+
+<p align="center">
+  <strong>MOVE THE SIGNAL</strong><br>
+  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20A1&body=MOVE%3DA1"><code>A1</code></a>
+  ·
+  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20C3&body=MOVE%3DC3"><code>C3</code></a>
+  ·
+  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20F5&body=MOVE%3DF5"><code>F5</code></a>
+  ·
+  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20H7&body=MOVE%3DH7"><code>H7</code></a>
+</p>
+
+<p align="center">
+  <sub>Each move opens a public GitHub issue. A bounded Action accepts only A1, C3, F5, or H7, updates the board, then closes the issue.</sub>
 </p>
 
 ## Selected work
@@ -32,5 +57,6 @@
 ---
 
 <p align="center">
-  <strong>THINK AHEAD · BUILD DELIBERATELY · VERIFY WHAT MATTERS</strong>
+  <strong>THINK AHEAD · BUILD DELIBERATELY · VERIFY WHAT MATTERS</strong><br>
+  <sub>Profile telemetry refreshes every 6 hours and can also be regenerated manually.</sub>
 </p>
