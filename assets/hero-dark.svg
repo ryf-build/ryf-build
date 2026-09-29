@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">RYF — AI-native builder</title>
+<desc id="desc">Minimal dark profile banner for Ryf.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0d1117"/>
+    <stop offset="0.55" stop-color="#15111f"/>
+    <stop offset="1" stop-color="#0d1117"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#a78bfa"/>
+    <stop offset="1" stop-color="#39d353"/>
+  </linearGradient>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="20"/>
+  </filter>
+</defs>
+<rect width="1200" height="420" rx="34" fill="url(#bg)"/>
+<circle cx="945" cy="96" r="112" fill="#8b5cf6" opacity=".12" filter="url(#glow)"/>
+<circle cx="1060" cy="316" r="100" fill="#39d353" opacity=".10" filter="url(#glow)"/>
+<rect x="54" y="50" width="1092" height="320" rx="26" fill="none" stroke="#30363d"/>
+<text x="88" y="142" fill="#f0f6fc" font-size="82" font-weight="800" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="10">RYF</text>
+<rect x="90" y="167" width="430" height="5" rx="2.5" fill="url(#accent)"/>
+<text x="90" y="223" fill="#c9d1d9" font-size="28" font-weight="650" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="2">AI-NATIVE PRODUCT BUILDER</text>
+<text x="90" y="273" fill="#8b949e" font-size="22" font-family="Segoe UI, Inter, Arial, sans-serif">One developer. Multiple AI agents. Real systems.</text>
+<text x="90" y="322" fill="#8b949e" font-size="18" font-family="Segoe UI, Inter, Arial, sans-serif">BUILD · VERIFY · AUTOMATE · SHIP</text>
+<circle cx="1008" cy="206" r="49" fill="none" stroke="#8b5cf6" stroke-width="2" opacity=".72"/>
+<circle cx="1008" cy="206" r="34" fill="none" stroke="#39d353" stroke-width="2" opacity=".72"/>
+<path d="M987 206h42M1008 185v42" stroke="#f0f6fc" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+</svg>
