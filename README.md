@@ -10,21 +10,12 @@
 
 <img src="./assets/generated/terminal.svg" alt="Public system console" width="100%">
 
-<img src="./assets/generated/signal.svg" alt="Issue-driven visitor signal" width="100%">
+## Operating model
+
+<img src="./assets/generated/model.svg" alt="RYF engineering operating model" width="100%">
 
 <p align="center">
-  <strong>MOVE THE SIGNAL</strong><br>
-  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20A1&body=MOVE%3DA1"><code>A1</code></a>
-  ·
-  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20C3&body=MOVE%3DC3"><code>C3</code></a>
-  ·
-  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20F5&body=MOVE%3DF5"><code>F5</code></a>
-  ·
-  <a href="https://github.com/ryf-build/ryf-build/issues/new?title=profile-move%3A%20H7&body=MOVE%3DH7"><code>H7</code></a>
-</p>
-
-<p align="center">
-  <sub>Each move opens a public Issue. A bounded Action accepts only A1, C3, F5, or H7, updates the signal, then closes the Issue.</sub>
+  <sub>Human intent sets goals, constraints, and authority. AI accelerates exploration and implementation. Work is reviewed, tested, automated where repeatable, and only then shipped as reusable public output.</sub>
 </p>
 
 ## Selected work
