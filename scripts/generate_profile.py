@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import base64
 import datetime as dt
 import html
 import json
@@ -123,69 +122,271 @@ def svg_shell(body, width, height, title):
 
 def hero(profile):
     updated = NOW.strftime("%Y-%m-%d %H:%M UTC")
-    hero_bytes = (ROOT / "assets" / "chess-hero.jpg").read_bytes()
-    hero_b64 = base64.b64encode(hero_bytes).decode("ascii")
+    latest = next((r["name"] for r in profile["repos"] if r["name"] != USER), "public-work")
+
+    # Perspective chessboard.
+    board = []
+    vx, vy = 884, 192
+    left, right, top, bottom = 620, 1092, 270, 455
+    files = 8
+    ranks = 5
+    for r in range(ranks):
+        p0 = r / ranks
+        p1 = (r + 1) / ranks
+        y0 = top + (bottom - top) * (p0 ** 1.45)
+        y1 = top + (bottom - top) * (p1 ** 1.45)
+        xl0 = vx + (left - vx) * ((y0 - vy) / (bottom - vy))
+        xr0 = vx + (right - vx) * ((y0 - vy) / (bottom - vy))
+        xl1 = vx + (left - vx) * ((y1 - vy) / (bottom - vy))
+        xr1 = vx + (right - vx) * ((y1 - vy) / (bottom - vy))
+        for c in range(files):
+            a0 = c / files
+            a1 = (c + 1) / files
+            x00 = xl0 + (xr0 - xl0) * a0
+            x01 = xl0 + (xr0 - xl0) * a1
+            x10 = xl1 + (xr1 - xl1) * a0
+            x11 = xl1 + (xr1 - xl1) * a1
+            fill = "#15120d" if (r + c) % 2 == 0 else "#090b0f"
+            board.append(
+                f'<polygon points="{x00:.1f},{y0:.1f} {x01:.1f},{y0:.1f} {x11:.1f},{y1:.1f} {x10:.1f},{y1:.1f}" '
+                f'fill="{fill}" stroke="#2a2418" stroke-width=".55" opacity=".94"/>'
+            )
+
+    # Architectural background and bokeh.
+    columns = []
+    for i in range(8):
+        x = 628 + i * 54
+        op = .13 if i % 2 == 0 else .07
+        columns.append(
+            f'<rect x="{x}" y="55" width="13" height="250" fill="#cda85a" opacity="{op}"/>'
+            f'<rect x="{x+16}" y="55" width="2" height="250" fill="#d8b86a" opacity=".08"/>'
+        )
+    bokeh = []
+    for i in range(26):
+        x = 610 + ((i * 83) % 470)
+        y = 72 + ((i * 47) % 255)
+        r = 1.2 + (i % 4) * .85
+        color = "#f2d58b" if i % 3 != 0 else "#9b87ff"
+        dur = 2.4 + (i % 6) * .47
+        bokeh.append(
+            f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="{color}" opacity=".22">'
+            f'<animate attributeName="opacity" values=".08;.75;.08" dur="{dur:.2f}s" begin="-{i*.13:.2f}s" repeatCount="indefinite"/>'
+            f'</circle>'
+        )
+
+    # Knight silhouette behind the king.
+    knight = """
+    <g opacity=".82">
+      <path d="M690 310
+               C706 288 721 268 736 251
+               C724 232 720 214 727 196
+               C735 178 753 166 769 149
+               L755 121
+               L789 135
+               C816 145 835 166 838 192
+               C823 187 811 183 799 183
+               C804 197 805 212 800 225
+               C789 251 764 274 744 294
+               L760 310 Z"
+            fill="#0b0e12" stroke="#7f6a3e" stroke-width="2.4"/>
+      <path d="M727 196 C754 177 785 165 812 173"
+            fill="none" stroke="#d8b86a" stroke-width="1.4" opacity=".45"/>
+      <circle cx="785" cy="164" r="3.2" fill="#f2d58b" opacity=".75"/>
+      <path d="M684 311 Q726 298 769 311 L783 342 H671 Z"
+            fill="#090b0f" stroke="#50432b" stroke-width="2"/>
+      <path d="M686 319 Q728 307 777 320" fill="none" stroke="#d8b86a" stroke-width="1" opacity=".3"/>
+    </g>
+    """
+
+    # Detailed king: layered fill, outline, wireframe, particles.
+    king_paths = """
+    <g>
+      <path d="M904 55 L904 89 M888 72 H920"
+            stroke="#f2d58b" stroke-width="6" stroke-linecap="round"/>
+      <path d="M876 98
+               C883 88 893 83 904 83
+               C915 83 925 88 932 98
+               L925 115
+               C920 123 914 128 904 128
+               C894 128 888 123 883 115 Z"
+            fill="url(#kingGold)" stroke="#f2d58b" stroke-width="2.5"/>
+      <path d="M878 130 Q904 142 930 130 L923 151 Q904 161 885 151 Z"
+            fill="#18140d" stroke="#d8b86a" stroke-width="2"/>
+      <path d="M887 157
+               C884 187 879 216 864 247
+               C850 277 831 306 818 327
+               H990
+               C977 306 958 277 944 247
+               C929 216 924 187 921 157 Z"
+            fill="url(#kingBody)" stroke="#f2d58b" stroke-width="2.8"/>
+      <path d="M818 327 Q904 307 990 327 L982 348 Q904 332 826 348 Z"
+            fill="#15110b" stroke="#d8b86a" stroke-width="2.3"/>
+      <path d="M808 350 Q904 331 1000 350 L989 377 H819 Z"
+            fill="url(#kingBase)" stroke="#f2d58b" stroke-width="2.8"/>
+      <path d="M819 364 Q904 348 989 364"
+            fill="none" stroke="#f2d58b" stroke-width="1.3" opacity=".5"/>
+    </g>
+    """
+
+    wire = []
+    for i in range(10):
+        y = 168 + i * 17
+        half = 20 + i * 8.3
+        wire.append(
+            f'<path d="M{904-half:.1f} {y} Q904 {y-10:.1f} {904+half:.1f} {y}" '
+            f'fill="none" stroke="#d8b86a" stroke-width=".8" opacity="{.18 + i*.018:.2f}"/>'
+        )
+    for i in range(7):
+        x = 850 + i * 18
+        wire.append(
+            f'<path d="M904 158 C{x} 220 {x-30} 286 {x-42} 331" '
+            f'fill="none" stroke="#f2d58b" stroke-width=".65" opacity=".18"/>'
+        )
+        wire.append(
+            f'<path d="M904 158 C{958-(x-850)} 220 {988-(x-850)} 286 {1000-(x-850)} 331" '
+            f'fill="none" stroke="#f2d58b" stroke-width=".65" opacity=".18"/>'
+        )
+
+    particles = []
+    for i in range(86):
+        # deterministic points distributed around king body
+        y = 105 + ((i * 37) % 238)
+        p = min(1, max(0, (y - 150) / 185))
+        half = 22 + 75 * (p ** 1.35)
+        side = -1 if i % 2 == 0 else 1
+        x = 904 + side * (half * (.22 + ((i * 29) % 73) / 100))
+        color = "#f2d58b" if i % 5 < 4 else "#9b87ff"
+        rr = 1.0 + (i % 4) * .35
+        particles.append(
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rr:.2f}" fill="{color}" opacity=".45">'
+            f'<animate attributeName="opacity" values=".12;.9;.12" dur="{2.2+(i%7)*.33:.2f}s" begin="-{i*.08:.2f}s" repeatCount="indefinite"/>'
+            f'</circle>'
+        )
+
+    orbit_svg = []
+    orbit_specs = [
+        (905, 211, 182, 52, 6, 19, "#d8b86a", 1),
+        (905, 211, 162, 70, 44, 25, "#9b87ff", -1),
+        (905, 211, 139, 87, 79, 31, "#48e59b", 1),
+    ]
+    for cx,cy,rx,ry,angle,dur,color,direction in orbit_specs:
+        end = angle + direction * 360
+        orbit_svg.append(
+            f'<g transform="rotate({angle} {cx} {cy})">'
+            f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{color}" stroke-width="1.15" opacity=".28"/>'
+            f'<circle cx="{cx+rx}" cy="{cy}" r="3.7" fill="{color}" filter="url(#softGlow)"/>'
+            f'<animateTransform attributeName="transform" type="rotate" values="{angle} {cx} {cy};{end} {cx} {cy}" dur="{dur}s" repeatCount="indefinite"/>'
+            f'</g>'
+        )
+
+    pills = ["AI Agents","Automation","Infrastructure","Verification","Open Source","AI Workflows","Windows","Systems"]
+    pill_svg = []
+    for i, label in enumerate(pills):
+        row, col = divmod(i, 4)
+        x = 52 + col * 132
+        y = 302 + row * 40
+        pill_svg.append(
+            f'<rect x="{x}" y="{y}" width="118" height="28" rx="14" fill="#090c10" stroke="#8f7745" stroke-width="1"/>'
+            f'<text x="{x+59}" y="{y+18.5}" text-anchor="middle" fill="#c9d1d9" font-size="10" font-family="Segoe UI">{label}</text>'
+        )
+
+    coords = []
+    for i, ch in enumerate("ABCDEFGH"):
+        coords.append(f'<text x="{680+i*47}" y="446" fill="#6f7782" font-size="9.5" font-family="monospace">{ch}</text>')
+    for i in range(8):
+        coords.append(f'<text x="1080" y="{88+i*41}" fill="#5d5546" font-size="9" font-family="monospace">A{i+1}</text>')
+
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="482" viewBox="0 0 1120 482" role="img">
 <title>RYF chess strategy hero</title>
 <defs>
-  <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#d8b86a" stop-opacity="0"/>
-    <stop offset=".5" stop-color="#f2d58b" stop-opacity=".22"/>
-    <stop offset="1" stop-color="#d8b86a" stop-opacity="0"/>
+  <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#07090d"/>
+    <stop offset=".58" stop-color="#090b0f"/>
+    <stop offset="1" stop-color="#0b0d10"/>
   </linearGradient>
-  <filter id="blur" x="-300%" y="-300%" width="600%" height="600%">
-    <feGaussianBlur stdDeviation="7"/>
+  <linearGradient id="kingGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f4dc99"/>
+    <stop offset=".35" stop-color="#9b7430"/>
+    <stop offset=".7" stop-color="#20170b"/>
+    <stop offset="1" stop-color="#e0b75e"/>
+  </linearGradient>
+  <linearGradient id="kingBody" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#0b0d11"/>
+    <stop offset=".38" stop-color="#1b160d"/>
+    <stop offset=".55" stop-color="#4c3514"/>
+    <stop offset=".74" stop-color="#16120b"/>
+    <stop offset="1" stop-color="#080a0d"/>
+  </linearGradient>
+  <linearGradient id="kingBase" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#090b0f"/>
+    <stop offset=".5" stop-color="#34240f"/>
+    <stop offset="1" stop-color="#090b0f"/>
+  </linearGradient>
+  <radialGradient id="kingGlow">
+    <stop offset="0" stop-color="#f2d58b" stop-opacity=".24"/>
+    <stop offset=".45" stop-color="#d8b86a" stop-opacity=".08"/>
+    <stop offset="1" stop-color="#07090d" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#f2d58b" stop-opacity="0"/>
+    <stop offset=".5" stop-color="#f2d58b" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#f2d58b" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="softGlow" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+  <filter id="bigGlow" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="12"/>
   </filter>
 </defs>
-<rect width="1120" height="482" rx="28" fill="#07090d"/>
-<image href="data:image/jpeg;base64,{hero_b64}" x="0" y="0" width="1120" height="482" preserveAspectRatio="xMidYMid slice"/>
-<rect x="1" y="1" width="1118" height="480" rx="27" fill="none" stroke="#2a2d31"/>
 
-<!-- moving light over the king / board -->
-<rect x="560" y="20" width="72" height="430" fill="url(#scan)" filter="url(#blur)" opacity=".75">
-  <animate attributeName="x" values="560;1040;560" dur="7.4s" repeatCount="indefinite"/>
+<rect width="1120" height="482" rx="28" fill="url(#heroBg)"/>
+<rect x="1" y="1" width="1118" height="480" rx="27" fill="none" stroke="#25292f"/>
+
+<g>{''.join(columns)}</g>
+<g>{''.join(bokeh)}</g>
+
+<!-- left editorial block -->
+<text x="52" y="50" fill="#9b87ff" font-size="11" font-weight="700" font-family="monospace">ryf-build / README.md</text>
+<text x="52" y="133" fill="#fff1c5" font-size="76" font-weight="800" font-family="Georgia, serif" letter-spacing="2.5">RYF</text>
+<text x="54" y="176" fill="#f2d58b" font-size="21.5" font-weight="700" font-family="Georgia, serif" letter-spacing="1.05">AI-NATIVE PRODUCT BUILDER</text>
+<text x="54" y="211" fill="#f4f7fb" font-size="16.5" font-family="Georgia, serif" letter-spacing="2.1">STRATEGY · SYSTEMS · EXECUTION</text>
+<text x="54" y="247" fill="#c9d1d9" font-size="14.5" font-family="Segoe UI">Building software, automation, and engineering systems with AI.</text>
+<text x="54" y="270" fill="#7d8590" font-size="11.8" font-family="Segoe UI">Make the move deliberate. Build the position. Verify the result.</text>
+{''.join(pill_svg)}
+
+<!-- right cinematic field -->
+<circle cx="905" cy="210" r="215" fill="url(#kingGlow)"/>
+<g opacity=".96">{''.join(board)}</g>
+{knight}
+{''.join(orbit_svg)}
+{king_paths}
+<g>{''.join(wire)}</g>
+<g>{''.join(particles)}</g>
+
+<!-- labels -->
+<text x="650" y="70" fill="#f2d58b" font-size="10.5" font-weight="800" font-family="Georgia, serif" letter-spacing="1.6">STRATEGY</text>
+<text x="650" y="86" fill="#a99463" font-size="9" font-family="Segoe UI" letter-spacing="1.1">BUILDS OPTIONS</text>
+<text x="994" y="104" fill="#f2d58b" font-size="10.5" font-weight="800" font-family="Georgia, serif" letter-spacing="1.6">SYSTEMS</text>
+<text x="994" y="120" fill="#a99463" font-size="9" font-family="Segoe UI" letter-spacing="1.1">CREATE LEVERAGE</text>
+<text x="986" y="246" fill="#f2d58b" font-size="10.5" font-weight="800" font-family="Georgia, serif" letter-spacing="1.6">EXECUTION</text>
+<text x="986" y="262" fill="#a99463" font-size="9" font-family="Segoe UI" letter-spacing="1.1">TURNS IDEAS</text>
+<text x="986" y="276" fill="#a99463" font-size="9" font-family="Segoe UI" letter-spacing="1.1">INTO REALITY</text>
+
+<g>{''.join(coords)}</g>
+
+<!-- motion accents -->
+<rect x="610" y="32" width="72" height="402" fill="url(#scan)" opacity=".62">
+  <animate attributeName="x" values="610;1030;610" dur="8.2s" repeatCount="indefinite"/>
 </rect>
-
-<!-- orbit tracers -->
-<g transform="rotate(8 825 245)">
-  <ellipse cx="825" cy="245" rx="205" ry="62" fill="none" stroke="#d8b86a" stroke-width="1.4" opacity=".28"/>
-  <circle cx="1030" cy="245" r="4.2" fill="#f2d58b" filter="url(#blur)"/>
-  <animateTransform attributeName="transform" type="rotate" values="8 825 245;368 825 245" dur="18s" repeatCount="indefinite"/>
-</g>
-<g transform="rotate(48 825 245)">
-  <ellipse cx="825" cy="245" rx="178" ry="80" fill="none" stroke="#9b87ff" stroke-width="1.2" opacity=".22"/>
-  <circle cx="1003" cy="245" r="3.8" fill="#c4b5fd"/>
-  <animateTransform attributeName="transform" type="rotate" values="48 825 245;-312 825 245" dur="24s" repeatCount="indefinite"/>
-</g>
-<g transform="rotate(82 825 245)">
-  <ellipse cx="825" cy="245" rx="152" ry="97" fill="none" stroke="#48e59b" stroke-width="1.1" opacity=".18"/>
-  <circle cx="977" cy="245" r="3.4" fill="#48e59b"/>
-  <animateTransform attributeName="transform" type="rotate" values="82 825 245;442 825 245" dur="29s" repeatCount="indefinite"/>
-</g>
-
-<!-- tactical nodes -->
-<g>
-  <circle cx="760" cy="178" r="4" fill="#d8b86a">
-    <animate attributeName="r" values="2.5;7;2.5" dur="2.7s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".35;1;.35" dur="2.7s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="905" cy="132" r="4" fill="#9b87ff">
-    <animate attributeName="r" values="2.5;6.5;2.5" dur="3.1s" begin="-1s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".3;1;.3" dur="3.1s" begin="-1s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="988" cy="278" r="4" fill="#48e59b">
-    <animate attributeName="r" values="2.5;7;2.5" dur="3.6s" begin="-1.7s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".3;1;.3" dur="3.6s" begin="-1.7s" repeatCount="indefinite"/>
-  </circle>
-</g>
-
-<!-- board signal -->
-<circle cx="620" cy="448" r="3.2" fill="#f2d58b">
-  <animate attributeName="cx" values="620;1050;620" dur="6.2s" repeatCount="indefinite"/>
+<circle cx="665" cy="427" r="3.2" fill="#f2d58b">
+  <animate attributeName="cx" values="665;1052;665" dur="6.2s" repeatCount="indefinite"/>
   <animate attributeName="fill" values="#f2d58b;#9b87ff;#48e59b;#f2d58b" dur="6.2s" repeatCount="indefinite"/>
 </circle>
-<text x="22" y="468" fill="#7d8590" font-size="9.5" font-family="monospace">animated profile system · refreshed {updated}</text>
+
+<text x="52" y="462" fill="#616975" font-size="9.2" font-family="monospace">latest public work / {esc(latest)} · animated profile · refreshed {updated}</text>
 </svg>"""
+
 
 def about(profile):
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="180" viewBox="0 0 1120 180" role="img">
