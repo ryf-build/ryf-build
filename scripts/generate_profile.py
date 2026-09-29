@@ -17,18 +17,17 @@ USER = os.getenv("GITHUB_REPOSITORY_OWNER", "ryf-build")
 TOKEN = os.getenv("GITHUB_TOKEN", "")
 NOW = dt.datetime.now(dt.timezone.utc)
 
-C = {
-    "gold": "#e3bd62",
-    "purple": "#a78bfa",
-    "green": "#63e6a1",
+COLORS = {
+    "bg": "#07090d",
+    "panel": "#0b0f14",
+    "border": "#20262e",
+    "text": "#f4f7fb",
+    "sub": "#aab4c0",
+    "muted": "#66707c",
+    "grid": "#1a222b",
+    "violet": "#9b87ff",
+    "green": "#48e59b",
     "blue": "#58a6ff",
-    "bg": "#080a0e",
-    "panel": "#0d1117",
-    "border": "#21262d",
-    "text": "#f0f6fc",
-    "sub": "#c9d1d9",
-    "muted": "#7d8590",
-    "grid": "#27303a",
 }
 
 def esc(value):
@@ -57,8 +56,6 @@ def load_public():
             "name": repo.get("name", ""),
             "description": repo.get("description") or "",
             "language": repo.get("language") or "",
-            "stars": repo.get("stargazers_count", 0),
-            "forks": repo.get("forks_count", 0),
             "pushed_at": repo.get("pushed_at", ""),
         })
 
@@ -75,322 +72,153 @@ def load_public():
             "login": user.get("login", USER),
             "name": user.get("name") or "Ryf",
             "bio": user.get("bio") or "",
-            "public_repos": user.get("public_repos", 0),
         },
         "repos": repos,
         "events": events,
         "generated_at": NOW.isoformat(),
     }
 
-def shell(body, width, height, title):
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img">
-<title>{esc(title)}</title>
-<defs>
-  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="{C['gold']}"/>
-    <stop offset=".52" stop-color="{C['purple']}"/>
-    <stop offset="1" stop-color="{C['green']}"/>
-  </linearGradient>
-  <radialGradient id="radarGlow">
-    <stop offset="0" stop-color="{C['green']}" stop-opacity=".20"/>
-    <stop offset="1" stop-color="{C['green']}" stop-opacity="0"/>
-  </radialGradient>
-  <filter id="glow" x="-300%" y="-300%" width="600%" height="600%">
-    <feGaussianBlur stdDeviation="4"/>
-  </filter>
-</defs>
-<rect x="1" y="1" width="{width-2}" height="{height-2}" rx="26" fill="{C['bg']}" stroke="{C['border']}"/>
-{body}
-</svg>"""
+def latest_public_work(profile):
+    for repo in profile["repos"]:
+        if repo["name"] != USER:
+            return repo["name"]
+    return "public-work"
 
-def hud(profile):
-    repos = profile["repos"]
-    top = repos[0]["name"] if repos else "ryf-build"
-
-    status = [
-        ("SYSTEM", "LIVE", C["green"]),
-        ("PUBLIC", "OPEN", C["gold"]),
-        ("PRIVATE", "SEALED", C["purple"]),
-        ("AUTOMATION", "ACTIVE", C["blue"]),
-    ]
-    status_svg = []
-    for i, (label, value, color) in enumerate(status):
-        x = 42 + i * 145
-        status_svg.append(
-            f'<text x="{x}" y="211" fill="{C["muted"]}" font-size="10.5" font-family="Segoe UI" letter-spacing="1.2">{label}</text>'
-            f'<circle cx="{x+3}" cy="239" r="4" fill="{color}"><animate attributeName="opacity" values=".35;1;.35" dur="{2.2+i*.45}s" repeatCount="indefinite"/></circle>'
-            f'<text x="{x+16}" y="244" fill="{C["text"]}" font-size="21" font-weight="700" font-family="Segoe UI">{value}</text>'
-        )
-
-    pulse_bars = []
-    for i in range(18):
-        x = 646 + i * 24
-        h = 12 + (i % 6) * 7
-        color = (C["gold"], C["purple"], C["green"])[i % 3]
-        pulse_bars.append(
-            f'<rect x="{x}" y="{318-h}" width="12" height="{h}" rx="2" fill="{color}" opacity=".35">'
-            f'<animate attributeName="height" values="{h};{h+18};{h}" dur="{2.7+(i%5)*.35}s" begin="-{i*.11:.2f}s" repeatCount="indefinite"/>'
-            f'<animate attributeName="y" values="{318-h};{300-h};{318-h}" dur="{2.7+(i%5)*.35}s" begin="-{i*.11:.2f}s" repeatCount="indefinite"/>'
-            f'</rect>'
-        )
-
-    body = f"""
-<text x="42" y="45" fill="{C['muted']}" font-size="11" font-family="Segoe UI" letter-spacing="2.5">RYF / LIVE PUBLIC SYSTEM</text>
-<text x="42" y="100" fill="{C['text']}" font-size="46" font-weight="800" font-family="Segoe UI">CONTROL FIELD</text>
-<rect x="42" y="119" width="452" height="3" rx="1.5" fill="url(#accent)"/>
-<text x="42" y="158" fill="{C['sub']}" font-size="16.5" font-family="Segoe UI">AI-native product builder · public signals only</text>
-{''.join(status_svg)}
-<text x="42" y="306" fill="{C['muted']}" font-size="10.5" font-family="Segoe UI" letter-spacing="1.4">TOP PUBLIC REPO / {esc(top)}</text>
-<text x="42" y="328" fill="{C['muted']}" font-size="9.5" font-family="Segoe UI">REFRESHED {NOW.strftime('%Y-%m-%d %H:%M UTC')}</text>
-
-<g>
-  <circle cx="952" cy="173" r="111" fill="url(#radarGlow)"/>
-  <circle cx="952" cy="173" r="103" fill="#09130f" stroke="{C['grid']}"/>
-  <circle cx="952" cy="173" r="82" fill="none" stroke="{C['grid']}"/>
-  <circle cx="952" cy="173" r="60" fill="none" stroke="{C['grid']}"/>
-  <circle cx="952" cy="173" r="37" fill="none" stroke="{C['grid']}"/>
-  <path d="M952 70V276M849 173H1055M879 100L1025 246M1025 100L879 246" stroke="{C['grid']}" opacity=".85"/>
-  <g>
-    <path d="M952 173L952 70A103 103 0 0 1 1025 100Z" fill="{C['green']}" opacity=".17"/>
-    <line x1="952" y1="173" x2="952" y2="70" stroke="{C['green']}" stroke-width="2.2"/>
-    <animateTransform attributeName="transform" type="rotate" values="0 952 173;360 952 173" dur="3.4s" repeatCount="indefinite"/>
-  </g>
-  <circle cx="952" cy="173" r="5" fill="{C['text']}"/>
-  <circle cx="913" cy="137" r="4" fill="{C['gold']}">
-    <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".35;1;.35" dur="2.4s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="1009" cy="205" r="4" fill="{C['purple']}">
-    <animate attributeName="r" values="3;6;3" dur="3.1s" begin="-.8s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".3;1;.3" dur="3.1s" begin="-.8s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="982" cy="114" r="4" fill="{C['green']}">
-    <animate attributeName="r" values="3;7;3" dur="2.8s" begin="-1.2s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values=".3;1;.3" dur="2.8s" begin="-1.2s" repeatCount="indefinite"/>
-  </circle>
-</g>
-
-<g>{''.join(pulse_bars)}</g>
-<rect x="638" y="278" width="58" height="54" fill="url(#accent)" opacity=".12">
-  <animate attributeName="x" values="638;1038;638" dur="4.8s" repeatCount="indefinite"/>
-</rect>
-"""
-    return shell(body, 1120, 360, "RYF live control field")
-
-def activity_field(profile):
-    events = profile["events"][:24]
-    event_colors = {
-        "PushEvent": C["gold"],
-        "PullRequestEvent": C["purple"],
-        "IssuesEvent": C["green"],
-        "CreateEvent": C["blue"],
-        "IssueCommentEvent": "#f0883e",
-    }
-
-    # Dense geometric field. Public events become the brighter anchors.
+def orbital_group(cx, cy, rx, ry, angle, duration, direction, color, seed):
     dots = []
-    rows = 9
-    cols = 19
-    for r in range(rows):
-        for c in range(cols):
-            x = 64 + c * 55 + r * 6
-            base = 128 + r * 26 + math.sin(c * .72 + r * .53) * 18
-            amp = 7 + ((c + r) % 5) * 2
-            y1 = base
-            y2 = base - amp
-            y3 = base + amp * .55
-            color = C["gold"] if c < 6 else (C["purple"] if c < 13 else C["green"])
-            radius = 1.15 + r * .16 + (c % 3) * .12
-            dur = 2.8 + ((r * 3 + c) % 7) * .37
-            begin = -((c * .11 + r * .19) % 2.7)
-            dots.append(
-                f'<circle cx="{x:.1f}" cy="{y1:.1f}" r="{radius:.2f}" fill="{color}" opacity=".30">'
-                f'<animate attributeName="cy" values="{y1:.1f};{y2:.1f};{y3:.1f};{y1:.1f}" dur="{dur:.2f}s" begin="{begin:.2f}s" repeatCount="indefinite"/>'
-                f'<animate attributeName="opacity" values=".18;.72;.18" dur="{dur+.7:.2f}s" begin="{begin:.2f}s" repeatCount="indefinite"/>'
-                f'</circle>'
-            )
-
-    grid_lines = []
-    for r in range(rows):
-        pts = []
-        for c in range(cols):
-            x = 64 + c * 55 + r * 6
-            y = 128 + r * 26 + math.sin(c * .72 + r * .53) * 18
-            pts.append(f"{x:.1f},{y:.1f}")
-        grid_lines.append(
-            f'<polyline points="{" ".join(pts)}" fill="none" stroke="{C["grid"]}" stroke-width=".8" opacity=".35"/>'
+    for i in range(14):
+        t = 2 * math.pi * i / 14
+        x = cx + rx * math.cos(t)
+        y = cy + ry * math.sin(t)
+        r = 1.4 + ((i + seed) % 4) * 0.45
+        opacity = 0.26 + ((i * 3 + seed) % 5) * 0.11
+        dots.append(
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.2f}" fill="{color}" opacity="{opacity:.2f}">'
+            f'<animate attributeName="opacity" values="{max(.18, opacity-.15):.2f};{min(.96, opacity+.28):.2f};{max(.18, opacity-.15):.2f}" dur="{2.5+(i%5)*.42:.2f}s" begin="-{i*.09:.2f}s" repeatCount="indefinite"/>'
+            f'</circle>'
         )
+    end = angle + (360 if direction > 0 else -360)
+    return (
+        f'<g transform="rotate({angle} {cx} {cy})">'
+        f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{color}" stroke-width=".8" opacity=".18"/>'
+        + ''.join(dots) +
+        f'<animateTransform attributeName="transform" type="rotate" values="{angle} {cx} {cy};{end} {cx} {cy}" dur="{duration}s" repeatCount="indefinite"/>'
+        f'</g>'
+    )
 
-    anchors = []
-    for i, event in enumerate(events):
-        col = i % 12
-        row = (i * 5) % 7
-        x = 180 + col * 72 + (row % 3) * 8
-        y = 118 + row * 31 + math.sin(i * .83) * 12
-        color = event_colors.get(event["type"], C["blue"])
-        anchors.append(
-            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.2" fill="{color}" filter="url(#glow)">'
-            f'<animate attributeName="r" values="2.8;6.8;2.8" dur="{2.1+(i%5)*.33:.2f}s" begin="-{i*.09:.2f}s" repeatCount="indefinite"/>'
-            f'<animate attributeName="opacity" values=".4;1;.4" dur="{2.1+(i%5)*.33:.2f}s" begin="-{i*.09:.2f}s" repeatCount="indefinite"/>'
+def interface(profile):
+    latest = latest_public_work(profile)
+    cx, cy = 885, 206
+
+    grid = []
+    for x in range(654, 1110, 32):
+        grid.append(f'<line x1="{x}" y1="56" x2="{x}" y2="354" stroke="{COLORS["grid"]}" stroke-width=".65" opacity=".55"/>')
+    for y in range(66, 355, 32):
+        grid.append(f'<line x1="650" y1="{y}" x2="1110" y2="{y}" stroke="{COLORS["grid"]}" stroke-width=".65" opacity=".55"/>')
+
+    orbitals = [
+        orbital_group(cx, cy, 178, 42, 8, 28, 1, COLORS["violet"], 1),
+        orbital_group(cx, cy, 162, 55, 42, 34, -1, COLORS["green"], 2),
+        orbital_group(cx, cy, 148, 68, 78, 31, 1, COLORS["blue"], 3),
+        orbital_group(cx, cy, 134, 38, 118, 26, -1, COLORS["violet"], 4),
+        orbital_group(cx, cy, 120, 74, 154, 36, 1, COLORS["green"], 5),
+    ]
+
+    event_nodes = []
+    event_colors = {
+        "PushEvent": COLORS["green"],
+        "PullRequestEvent": COLORS["violet"],
+        "IssuesEvent": COLORS["blue"],
+        "CreateEvent": "#d1d5db",
+        "IssueCommentEvent": "#aab4c0",
+    }
+    for i, event in enumerate(profile["events"][:7]):
+        theta = (i * 0.88) + 0.45
+        x = cx + math.cos(theta) * (78 + (i % 3) * 22)
+        y = cy + math.sin(theta) * (52 + (i % 2) * 18)
+        color = event_colors.get(event["type"], COLORS["blue"])
+        event_nodes.append(
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="{color}" filter="url(#glow)">'
+            f'<animate attributeName="r" values="2.4;6.2;2.4" dur="{2.1+i*.24:.2f}s" begin="-{i*.22:.2f}s" repeatCount="indefinite"/>'
+            f'<animate attributeName="opacity" values=".45;1;.45" dur="{2.1+i*.24:.2f}s" begin="-{i*.22:.2f}s" repeatCount="indefinite"/>'
             f'</circle>'
         )
 
-    body = f"""
-<text x="34" y="42" fill="{C['muted']}" font-size="11.5" font-family="Segoe UI" letter-spacing="2.4">PUBLIC ACTIVITY FIELD / RECENT EVENTS</text>
-<text x="34" y="80" fill="{C['text']}" font-size="28" font-weight="800" font-family="Segoe UI">GENERATIVE SIGNAL TERRAIN</text>
-<text x="34" y="106" fill="{C['muted']}" font-size="12.5" font-family="Segoe UI">Public GitHub events are mapped into a moving geometric field. Private work is not queried.</text>
+    latest_repo = esc(latest)
+    updated = NOW.strftime("%Y-%m-%d %H:%M UTC")
 
-<g opacity=".75">{''.join(grid_lines)}</g>
-<g>{''.join(dots)}</g>
-<g>{''.join(anchors)}</g>
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="410" viewBox="0 0 1120 410" role="img">
+<title>RYF — AI-native product builder</title>
+<defs>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="{COLORS['violet']}"/>
+    <stop offset="1" stop-color="{COLORS['green']}"/>
+  </linearGradient>
+  <radialGradient id="orbGlow">
+    <stop offset="0" stop-color="{COLORS['violet']}" stop-opacity=".13"/>
+    <stop offset=".48" stop-color="{COLORS['green']}" stop-opacity=".06"/>
+    <stop offset="1" stop-color="{COLORS['bg']}" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-300%" y="-300%" width="600%" height="600%">
+    <feGaussianBlur stdDeviation="5"/>
+  </filter>
+</defs>
 
-<rect x="-160" y="112" width="160" height="258" fill="url(#accent)" opacity=".08">
-  <animate attributeName="x" values="-160;1180" dur="4.6s" repeatCount="indefinite"/>
-</rect>
-<line x1="40" y1="372" x2="1080" y2="372" stroke="{C['grid']}" opacity=".55"/>
-<circle cx="52" cy="372" r="3.2" fill="{C['green']}">
-  <animate attributeName="cx" values="52;1068;52" dur="6.2s" repeatCount="indefinite"/>
-  <animate attributeName="fill" values="{C['gold']};{C['purple']};{C['green']};{C['gold']}" dur="6.2s" repeatCount="indefinite"/>
+<rect width="1120" height="410" rx="28" fill="{COLORS['bg']}"/>
+<rect x="1" y="1" width="1118" height="408" rx="27" fill="none" stroke="{COLORS['border']}"/>
+
+<text x="54" y="54" fill="{COLORS['muted']}" font-size="11" font-weight="700" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="2.6">RYF / LIVE PROFILE SYSTEM</text>
+
+<text x="52" y="128" fill="{COLORS['text']}" font-size="59" font-weight="820" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing=".5">AI-NATIVE</text>
+<text x="52" y="185" fill="{COLORS['text']}" font-size="59" font-weight="820" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing=".5">PRODUCT BUILDER</text>
+<rect x="54" y="211" width="338" height="3" rx="1.5" fill="url(#accent)"/>
+
+<text x="54" y="254" fill="{COLORS['sub']}" font-size="18" font-family="Segoe UI, Inter, Arial, sans-serif">Software · automation · infrastructure · AI</text>
+<text x="54" y="292" fill="{COLORS['muted']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="1.2">BUILD DELIBERATELY · VERIFY WHAT MATTERS</text>
+
+<circle cx="58" cy="335" r="4" fill="{COLORS['green']}">
+  <animate attributeName="opacity" values=".35;1;.35" dur="2.2s" repeatCount="indefinite"/>
 </circle>
-"""
-    return shell(body, 1120, 410, "RYF generative public activity field")
+<text x="72" y="340" fill="{COLORS['sub']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif">PUBLIC PROFILE LIVE</text>
+<text x="230" y="340" fill="{COLORS['muted']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif">·</text>
+<text x="248" y="340" fill="{COLORS['sub']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif">AUTOMATION / 6H</text>
+<text x="374" y="340" fill="{COLORS['muted']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif">·</text>
+<text x="392" y="340" fill="{COLORS['sub']}" font-size="12.5" font-family="Segoe UI, Inter, Arial, sans-serif">PRIVATE / SEALED</text>
 
-def terminal(profile):
-    repos = profile["repos"][:4]
-    events = profile["events"][:5]
+<text x="54" y="376" fill="{COLORS['muted']}" font-size="10.5" font-family="monospace">latest public work / {latest_repo}</text>
 
-    repo_lines = []
-    for i, repo in enumerate(repos):
-        y = 115 + i * 27
-        repo_lines.append(
-            f'<text x="608" y="{y}" fill="{C["muted"]}" font-size="11" font-family="monospace">{i+1:02d}</text>'
-            f'<text x="642" y="{y}" fill="{C["sub"]}" font-size="12.5" font-family="monospace">{esc(repo["name"][:34])}</text>'
-        )
+<g opacity=".72">{''.join(grid)}</g>
+<circle cx="{cx}" cy="{cy}" r="205" fill="url(#orbGlow)"/>
 
-    event_names = {
-        "PushEvent": "push",
-        "PullRequestEvent": "pull-request",
-        "IssuesEvent": "issue",
-        "CreateEvent": "create",
-        "IssueCommentEvent": "comment",
-    }
-    event_lines = []
-    for i, event in enumerate(events):
-        y = 115 + i * 27
-        color = (C["gold"], C["purple"], C["green"], C["blue"], "#f0883e")[i % 5]
-        event_lines.append(
-            f'<g opacity=".72"><animate attributeName="opacity" values=".38;1;.38" dur="{2.4+i*.35:.2f}s" begin="-{i*.3:.2f}s" repeatCount="indefinite"/>'
-            f'<text x="44" y="{y}" fill="{color}" font-size="11" font-family="monospace">&gt;</text>'
-            f'<text x="65" y="{y}" fill="{C["sub"]}" font-size="12.5" font-family="monospace">{esc(event_names.get(event["type"], "event"))}</text>'
-            f'<text x="198" y="{y}" fill="{C["muted"]}" font-size="12.5" font-family="monospace">{esc(event["repo"][:28])}</text></g>'
-        )
+{''.join(orbitals)}
 
-    body = f"""
-<circle cx="26" cy="26" r="5" fill="#ff5f56"/>
-<circle cx="44" cy="26" r="5" fill="#ffbd2e"/>
-<circle cx="62" cy="26" r="5" fill="#27c93f"/>
-<text x="90" y="31" fill="{C['muted']}" font-size="10.5" font-family="monospace">ryf@github / public-console</text>
+<circle cx="{cx}" cy="{cy}" r="5" fill="{COLORS['text']}"/>
+<circle cx="{cx}" cy="{cy}" r="20" fill="none" stroke="{COLORS['border']}" opacity=".9"/>
+<circle cx="{cx}" cy="{cy}" r="36" fill="none" stroke="{COLORS['border']}" opacity=".55"/>
 
-<text x="42" y="72" fill="{C['green']}" font-size="13" font-family="monospace">ryf@github:~$ public-stream --follow</text>
-<text x="42" y="94" fill="{C['muted']}" font-size="10" font-family="Segoe UI" letter-spacing="1.6">RECENT EVENTS</text>
-{''.join(event_lines)}
+{''.join(event_nodes)}
 
-<line x1="560" y1="78" x2="560" y2="236" stroke="{C['grid']}"/>
-<text x="608" y="94" fill="{C['muted']}" font-size="10" font-family="Segoe UI" letter-spacing="1.6">RECENTLY PUSHED PUBLIC REPOS</text>
-{''.join(repo_lines)}
+<line x1="676" y1="66" x2="676" y2="350" stroke="{COLORS['green']}" stroke-width="1.1" opacity=".22">
+  <animate attributeName="x1" values="676;1092;676" dur="5.8s" repeatCount="indefinite"/>
+  <animate attributeName="x2" values="676;1092;676" dur="5.8s" repeatCount="indefinite"/>
+</line>
 
-<rect x="42" y="243" width="8" height="15" fill="{C['green']}">
-  <animate attributeName="opacity" values="1;0;1" dur=".9s" repeatCount="indefinite"/>
-</rect>
-<text x="608" y="246" fill="{C['muted']}" font-size="10.5" font-family="monospace">production/private: sealed</text>
-"""
-    return shell(body, 1120, 275, "RYF public system console")
-
-
-def operating_model(profile):
-    repos = profile["repos"]
-    repo_names = [r["name"] for r in repos if r["name"] != USER][:3]
-    while len(repo_names) < 3:
-        repo_names.append("public-work")
-
-    stages = [
-        ("HUMAN INTENT", "Define goals, constraints,", "and authority", C["gold"]),
-        ("AI AGENTS", "Explore, draft, implement,", "and analyze", C["purple"]),
-        ("BUILD", "Turn intent into", "working software", C["blue"]),
-        ("VERIFY", "Review, test, and", "inspect evidence", C["green"]),
-        ("AUTOMATE", "Encode repeatable", "execution paths", C["purple"]),
-        ("SHIP", "Publish reusable", "public artifacts", C["gold"]),
-    ]
-
-    nodes = []
-    arrows = []
-    xs = [70, 250, 430, 610, 790, 970]
-    for i, (title, line1, line2, color) in enumerate(stages):
-        x = xs[i]
-        nodes.append(
-            f'<rect x="{x}" y="112" width="126" height="96" rx="16" fill="#0d1117" stroke="{color}" stroke-opacity=".65"/>'
-            f'<circle cx="{x+18}" cy="132" r="4" fill="{color}"/>'
-            f'<text x="{x+16}" y="158" fill="{C["text"]}" font-size="14" font-weight="800" font-family="Segoe UI">{title}</text>'
-            f'<text x="{x+16}" y="180" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(line1)}</text>'
-            f'<text x="{x+16}" y="196" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(line2)}</text>'
-        )
-        if i < len(stages) - 1:
-            x1 = x + 126
-            x2 = xs[i+1]
-            arrows.append(
-                f'<path d="M{x1+8} 160 H{x2-10}" stroke="{C["grid"]}" stroke-width="2"/>'
-                f'<path d="M{x2-18} 154 L{x2-10} 160 L{x2-18} 166" fill="none" stroke="{color}" stroke-width="1.6"/>'
-            )
-
-    principles = [
-        ("AUTHORITY", "Human decisions stay explicit", C["gold"]),
-        ("QUALITY", "Evidence before release", C["green"]),
-        ("BOUNDARY", "Production remains private", C["purple"]),
-        ("OUTPUT", "Reusable ideas become public", C["blue"]),
-    ]
-    principle_svg = []
-    for i, (k, v, color) in enumerate(principles):
-        x = 70 + i * 255
-        principle_svg.append(
-            f'<circle cx="{x}" cy="268" r="4" fill="{color}"/>'
-            f'<text x="{x+14}" y="272" fill="{C["text"]}" font-size="11.5" font-weight="700" font-family="Segoe UI">{k}</text>'
-            f'<text x="{x+14}" y="292" fill="{C["muted"]}" font-size="10.5" font-family="Segoe UI">{esc(v)}</text>'
-        )
-
-    body = f"""
-<text x="36" y="42" fill="{C['muted']}" font-size="11.5" font-family="Segoe UI" letter-spacing="2.4">OPERATING MODEL / HOW I SHIP</text>
-<text x="36" y="80" fill="{C['text']}" font-size="28" font-weight="800" font-family="Segoe UI">HUMAN AUTHORITY → AI EXECUTION → VERIFIED OUTPUT</text>
-<text x="36" y="102" fill="{C['muted']}" font-size="12.5" font-family="Segoe UI">The profile is dynamic; the engineering model underneath it is deliberate.</text>
-
-{''.join(arrows)}
-{''.join(nodes)}
-
-<circle cx="210" cy="224" r="4" fill="{C['green']}">
-  <animate attributeName="cx" values="210;930;210" dur="7.2s" repeatCount="indefinite"/>
-  <animate attributeName="fill" values="{C['gold']};{C['purple']};{C['blue']};{C['green']};{C['gold']}" dur="7.2s" repeatCount="indefinite"/>
+<path d="M672 326H1088" stroke="{COLORS['border']}" stroke-width="1"/>
+<circle cx="688" cy="326" r="3.2" fill="{COLORS['green']}">
+  <animate attributeName="cx" values="688;1072;688" dur="6.6s" repeatCount="indefinite"/>
+  <animate attributeName="fill" values="{COLORS['violet']};{COLORS['green']};{COLORS['blue']};{COLORS['violet']}" dur="6.6s" repeatCount="indefinite"/>
 </circle>
 
-<path d="M70 236H1040" stroke="{C['grid']}" opacity=".55"/>
-{''.join(principle_svg)}
-
-<text x="70" y="330" fill="{C['muted']}" font-size="10.5" font-family="Segoe UI">PUBLIC EXAMPLES</text>
-<text x="182" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[0])}</text>
-<text x="470" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[1])}</text>
-<text x="758" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[2])}</text>
-"""
-    return shell(body, 1120, 360, "RYF operating model")
+<text x="672" y="370" fill="{COLORS['muted']}" font-size="9.5" font-family="monospace">public event field / refreshed {updated}</text>
+</svg>"""
 
 def main():
     profile = load_public()
 
-    outputs = {
-        "hud.svg": hud(profile),
-        "field.svg": activity_field(profile),
-        "terminal.svg": terminal(profile),
-        "model.svg": operating_model(profile),
-    }
-    for name, svg in outputs.items():
-        (OUT / name).write_text(svg, encoding="utf-8")
+    for path in OUT.glob("*.svg"):
+        path.unlink()
+
+    (OUT / "interface.svg").write_text(interface(profile), encoding="utf-8")
 
     snapshot = {
         "user": profile["user"],
