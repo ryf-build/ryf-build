@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="210" viewBox="0 0 560 210" role="img" aria-label="Bishop — ai-development-playbook">
-<rect width="560" height="210" rx="24" fill="#0d1117"/><rect x="1" y="1" width="558" height="208" rx="23" fill="none" stroke="#30363d"/>
-<text x="34" y="64" fill="#a78bfa" font-size="42" font-family="Segoe UI Symbol, Segoe UI, Arial, sans-serif">♝</text>
-<text x="86" y="48" fill="#8b949e" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2">BISHOP · SYSTEMS</text>
-<text x="86" y="76" fill="#f0f6fc" font-size="22" font-weight="700" font-family="Segoe UI,Arial,sans-serif">AI DEVELOPMENT PLAYBOOK</text>
-<text x="32" y="120" fill="#c9d1d9" font-size="17" font-family="Segoe UI,Arial,sans-serif">Patterns for delivery, review, QA,</text>
-<text x="32" y="146" fill="#c9d1d9" font-size="17" font-family="Segoe UI,Arial,sans-serif">automation, and human authority.</text>
-<text x="32" y="184" fill="#8b949e" font-size="14" font-family="Segoe UI,Arial,sans-serif">Planning · Review · QA · Agents · Automation</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" viewBox="0 0 560 176"><rect width="560" height="176" rx="20" fill="#0d1117"/><rect x="1" y="1" width="558" height="174" rx="19" fill="none" stroke="#30363d"/><text x="28" y="36" fill="#a78bfa" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2">C3 / ENGINEERING PLAYBOOK</text><text x="28" y="70" fill="#f0f6fc" font-size="22" font-weight="700" font-family="Segoe UI,Arial,sans-serif">AI DEVELOPMENT PLAYBOOK</text><text x="28" y="107" fill="#c9d1d9" font-size="16" font-family="Segoe UI,Arial,sans-serif">Delivery, review, QA, automation, and human authority.</text><text x="28" y="145" fill="#8b949e" font-size="14" font-family="Segoe UI,Arial,sans-serif">Planning · Review · QA · Agents · Automation</text></svg>
