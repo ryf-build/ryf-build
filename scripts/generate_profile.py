@@ -309,30 +309,30 @@ def terminal(profile):
 
 def operating_model(profile):
     repos = profile["repos"]
-    repo_names = [r["name"] for r in repos[:3]]
+    repo_names = [r["name"] for r in repos if r["name"] != USER][:3]
     while len(repo_names) < 3:
         repo_names.append("public-work")
 
     stages = [
-        ("HUMAN INTENT", "Define goals, constraints, and authority", C["gold"]),
-        ("AI AGENTS", "Explore, draft, implement, and analyze", C["purple"]),
-        ("BUILD", "Turn intent into working software", C["blue"]),
-        ("VERIFY", "Review, test, and inspect evidence", C["green"]),
-        ("AUTOMATE", "Encode repeatable execution paths", C["purple"]),
-        ("SHIP", "Publish reusable public artifacts", C["gold"]),
+        ("HUMAN INTENT", "Define goals, constraints,", "and authority", C["gold"]),
+        ("AI AGENTS", "Explore, draft, implement,", "and analyze", C["purple"]),
+        ("BUILD", "Turn intent into", "working software", C["blue"]),
+        ("VERIFY", "Review, test, and", "inspect evidence", C["green"]),
+        ("AUTOMATE", "Encode repeatable", "execution paths", C["purple"]),
+        ("SHIP", "Publish reusable", "public artifacts", C["gold"]),
     ]
 
     nodes = []
     arrows = []
     xs = [70, 250, 430, 610, 790, 970]
-    for i, (title, subtitle, color) in enumerate(stages):
+    for i, (title, line1, line2, color) in enumerate(stages):
         x = xs[i]
         nodes.append(
             f'<rect x="{x}" y="112" width="126" height="96" rx="16" fill="#0d1117" stroke="{color}" stroke-opacity=".65"/>'
             f'<circle cx="{x+18}" cy="132" r="4" fill="{color}"/>'
             f'<text x="{x+16}" y="158" fill="{C["text"]}" font-size="14" font-weight="800" font-family="Segoe UI">{title}</text>'
-            f'<text x="{x+16}" y="180" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(subtitle[:26])}</text>'
-            f'<text x="{x+16}" y="196" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(subtitle[26:52])}</text>'
+            f'<text x="{x+16}" y="180" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(line1)}</text>'
+            f'<text x="{x+16}" y="196" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(line2)}</text>'
         )
         if i < len(stages) - 1:
             x1 = x + 126
