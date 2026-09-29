@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import base64
 import datetime as dt
 import html
 import json
@@ -122,6 +123,8 @@ def svg_shell(body, width, height, title):
 
 def hero(profile):
     updated = NOW.strftime("%Y-%m-%d %H:%M UTC")
+    hero_bytes = (ROOT / "assets" / "chess-hero.jpg").read_bytes()
+    hero_b64 = base64.b64encode(hero_bytes).decode("ascii")
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="482" viewBox="0 0 1120 482" role="img">
 <title>RYF chess strategy hero</title>
 <defs>
@@ -135,7 +138,7 @@ def hero(profile):
   </filter>
 </defs>
 <rect width="1120" height="482" rx="28" fill="#07090d"/>
-<image href="../chess-hero.jpg" x="0" y="0" width="1120" height="482" preserveAspectRatio="xMidYMid slice"/>
+<image href="data:image/jpeg;base64,{hero_b64}" x="0" y="0" width="1120" height="482" preserveAspectRatio="xMidYMid slice"/>
 <rect x="1" y="1" width="1118" height="480" rx="27" fill="none" stroke="#2a2d31"/>
 
 <!-- moving light over the king / board -->
