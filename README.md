@@ -1,31 +1,31 @@
-<img src="./assets/generated/hero.svg" alt="RYF — AI-native product builder, chess strategy system" width="100%">
+<div align="center">
 
-<img src="./assets/generated/about.svg" alt="Opening — About Ryf" width="100%">
+<img src="https://www.gitskins.com/api/section/hero?username=ryf-build&theme=github-dark&style=aura" alt="Ryf — AI-native product builder" width="100%" />
 
-<img src="./assets/generated/capability.svg" alt="Board Control — Technical Capability" width="100%">
+</div>
 
-<img src="./assets/generated/toolchain.svg" alt="Pieces — Core Toolchain" width="100%">
+## ♟ Strategy / Systems / Execution
 
-<img src="./assets/generated/signals.svg" alt="Middle Game — Engineering Signals" width="100%">
+<img src="https://www.gitskins.com/api/section/chess?username=ryf-build&theme=github-dark" alt="Animated chess replay" width="100%" />
 
-## ♟ Selected Lines / Selected Work
+## Selected work
 
-<p>
-  <a href="https://github.com/ryf-build/windows-ai-dev-team">
-    <img src="./assets/generated/project-windows-ai-dev-team.svg" alt="windows-ai-dev-team" width="32%">
-  </a>
-  <a href="https://github.com/ryf-build/ai-development-playbook">
-    <img src="./assets/generated/project-ai-development-playbook.svg" alt="ai-development-playbook" width="32%">
-  </a>
-  <a href="https://github.com/ryf-build/ryf-labs">
-    <img src="./assets/generated/project-ryf-labs.svg" alt="ryf-labs" width="32%">
-  </a>
-</p>
+<img src="https://www.gitskins.com/api/section/projects?username=ryf-build&theme=github-dark" alt="Selected public projects" width="100%" />
 
-<a href="https://github.com/ryf-build/windows-ai-dev-team">
-  <img src="./assets/generated/writing.svg" alt="Endgame / Writing — 1台のWindows PCをAI開発チームにする" width="100%">
-</a>
+## Technical signal
+
+<img src="https://www.gitskins.com/api/section/stack?username=ryf-build&theme=github-dark" alt="Technology stack" width="100%" />
+
+<img src="https://www.gitskins.com/api/section/stats?username=ryf-build&theme=github-dark" alt="GitHub stats" width="100%" />
+
+<img src="https://www.gitskins.com/api/section/heatmap?username=ryf-build&theme=github-dark" alt="Contribution activity" width="100%" />
+
+## Writing
+
+### [1台のWindows PCをAI開発チームにする](https://github.com/ryf-build/windows-ai-dev-team)
+
+GitHub、self-hosted runners、automation、QA、human-controlled AI workflows を使い、1台のWindows PCをAI-assisted development environmentとして運用する実践的な内容です。
 
 <p align="center">
-  <sub>Animated Chess profile · refreshed every 6 hours from public GitHub metadata only.</sub>
+  <sub>Public profile visuals are rendered from public GitHub data. Private product and production work remains private.</sub>
 </p>
