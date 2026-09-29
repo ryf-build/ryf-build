@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">RYF — AI-native builder</title>
+<desc id="desc">Minimal light profile banner for Ryf.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ffffff"/>
+    <stop offset="0.58" stop-color="#faf7ff"/>
+    <stop offset="1" stop-color="#f6fff8"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#7c3aed"/>
+    <stop offset="1" stop-color="#1a7f37"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="420" rx="34" fill="url(#bg)"/>
+<rect x="54" y="50" width="1092" height="320" rx="26" fill="none" stroke="#d0d7de"/>
+<text x="88" y="142" fill="#1f2328" font-size="82" font-weight="800" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="10">RYF</text>
+<rect x="90" y="167" width="430" height="5" rx="2.5" fill="url(#accent)"/>
+<text x="90" y="223" fill="#24292f" font-size="28" font-weight="650" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="2">AI-NATIVE PRODUCT BUILDER</text>
+<text x="90" y="273" fill="#57606a" font-size="22" font-family="Segoe UI, Inter, Arial, sans-serif">One developer. Multiple AI agents. Real systems.</text>
+<text x="90" y="322" fill="#57606a" font-size="18" font-family="Segoe UI, Inter, Arial, sans-serif">BUILD · VERIFY · AUTOMATE · SHIP</text>
+<circle cx="1008" cy="206" r="49" fill="none" stroke="#7c3aed" stroke-width="2" opacity=".72"/>
+<circle cx="1008" cy="206" r="34" fill="none" stroke="#1a7f37" stroke-width="2" opacity=".72"/>
+<path d="M987 206h42M1008 185v42" stroke="#24292f" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+</svg>
