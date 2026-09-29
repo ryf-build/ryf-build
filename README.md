@@ -1,21 +1,39 @@
-<img src="./assets/generated/interface.svg" alt="RYF — AI-native product builder" width="100%">
+<img src="./assets/generated/hero.svg" alt="RYF — AI-native product builder, chess strategy system" width="100%">
 
-<p align="center">
-  <sub>Generated every 6 hours from public GitHub metadata. Private product and production work stays private.</sub>
+## ♞ Opening / About
+
+I'm **Ryf**, an AI-native product builder.  
+I build software, automation, and engineering systems with AI.  
+Public repositories contain reusable tools, experiments, and engineering ideas; private product and production systems stay private.
+
+> **A better position tomorrow.**
+
+<img src="./assets/generated/capability.svg" alt="Board Control — Technical Capability" width="100%">
+
+<img src="./assets/generated/toolchain.svg" alt="Pieces — Core Toolchain" width="100%">
+
+<img src="./assets/generated/signals.svg" alt="Middle Game — Engineering Signals" width="100%">
+
+## ♟ Selected Lines / Selected Work
+
+<p>
+  <a href="https://github.com/ryf-build/windows-ai-dev-team">
+    <img src="./assets/generated/project-windows-ai-dev-team.svg" alt="windows-ai-dev-team" width="32%">
+  </a>
+  <a href="https://github.com/ryf-build/ai-development-playbook">
+    <img src="./assets/generated/project-ai-development-playbook.svg" alt="ai-development-playbook" width="32%">
+  </a>
+  <a href="https://github.com/ryf-build/ryf-labs">
+    <img src="./assets/generated/project-ryf-labs.svg" alt="ryf-labs" width="32%">
+  </a>
 </p>
 
-## Selected work
+## ♜ Endgame / Writing
 
-**[windows-ai-dev-team](https://github.com/ryf-build/windows-ai-dev-team)**  
-Turn one Windows PC into an AI-assisted development team.
+<a href="https://github.com/ryf-build/windows-ai-dev-team">
+  <img src="./assets/generated/writing.svg" alt="1台のWindows PCをAI開発チームにする" width="100%">
+</a>
 
-**[ai-development-playbook](https://github.com/ryf-build/ai-development-playbook)**  
-Practical patterns for AI-native software delivery, review, QA, and automation.
-
-**[ryf-labs](https://github.com/ryf-build/ryf-labs)**  
-Small public experiments in developer tooling, automation, and AI-assisted engineering.
-
-## Writing
-
-**[1台のWindows PCをAI開発チームにする](https://github.com/ryf-build/windows-ai-dev-team)**  
-GitHub, self-hosted runners, automation, QA, and human-controlled AI workflows.
+<p align="center">
+  <sub>Animated SVG profile system · refreshed every 6 hours from public GitHub metadata only.</sub>
+</p>
