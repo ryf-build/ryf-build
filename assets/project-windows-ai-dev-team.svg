@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" viewBox="0 0 560 176"><rect width="560" height="176" rx="20" fill="#0d1117"/><rect x="1" y="1" width="558" height="174" rx="19" fill="none" stroke="#30363d"/><text x="28" y="36" fill="#c8a951" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2">A1 / INFRASTRUCTURE</text><text x="28" y="70" fill="#f0f6fc" font-size="22" font-weight="700" font-family="Segoe UI,Arial,sans-serif">WINDOWS AI DEV TEAM</text><text x="28" y="107" fill="#c9d1d9" font-size="16" font-family="Segoe UI,Arial,sans-serif">One Windows PC → an AI-assisted development team.</text><text x="28" y="145" fill="#8b949e" font-size="14" font-family="Segoe UI,Arial,sans-serif">Windows · GitHub · Runners · AI · CI/CD</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="230" viewBox="0 0 1120 230" role="img" aria-labelledby="t d">
+<title id="t">Windows AI Dev Team</title><desc id="d">Featured public project</desc>
+<rect width="1120" height="230" rx="24" fill="#0b0d10"/><rect x="1" y="1" width="1118" height="228" rx="23" fill="none" stroke="#2b3138"/>
+<text x="36" y="46" fill="#d7b76a" font-size="13" font-weight="700" font-family="Segoe UI,Arial,sans-serif" letter-spacing="2.4">01 / FEATURED / INFRASTRUCTURE</text>
+<text x="36" y="95" fill="#f4f4f5" font-size="31" font-weight="800" font-family="Segoe UI,Arial,sans-serif">WINDOWS AI DEV TEAM</text>
+<text x="36" y="137" fill="#b7bec8" font-size="18" font-family="Segoe UI,Arial,sans-serif">Turn one Windows PC into an AI-assisted development team.</text>
+<text x="36" y="190" fill="#6f7782" font-size="14" font-family="Segoe UI,Arial,sans-serif">WINDOWS  ·  GITHUB  ·  SELF-HOSTED RUNNERS  ·  AI  ·  CI/CD</text>
+<g transform="translate(855 47)">
+  <rect width="212" height="138" rx="18" fill="#111419" stroke="#232830"/>
+  <circle cx="45" cy="47" r="5" fill="#d7b76a"/><circle cx="85" cy="72" r="5" fill="#9d8cff"/><circle cx="126" cy="42" r="5" fill="#57d68d"/><circle cx="165" cy="92" r="5" fill="#9d8cff"/>
+  <path d="M45 47L85 72L126 42L165 92" fill="none" stroke="#4b5563" stroke-width="1.2"/>
+</g>
+</svg>
