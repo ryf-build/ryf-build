@@ -2,44 +2,50 @@
   "user": {
     "login": "ryf-build",
     "name": "Ryf",
-    "bio": "AI-native product builder.\r\nBuilding software, automation, and\r\nengineering systems with AI.",
-    "public_repos": 4
+    "bio": "AI-native product builder.\r\nBuilding software, automation, and\r\nengineering systems with AI."
   },
   "repos": [
     {
       "name": "ryf-build",
       "description": "AI-native product builder. Systems, tools, and practical engineering workflows.",
       "language": "Python",
-      "stars": 0,
-      "forks": 0,
-      "pushed_at": "2026-09-29T10:45:18Z"
+      "pushed_at": "2026-09-29T10:55:30Z"
     },
     {
       "name": "ryf-labs",
       "description": "Small public experiments in developer tooling, automation, and AI-assisted engineering.",
       "language": "",
-      "stars": 0,
-      "forks": 0,
       "pushed_at": "2026-09-29T07:10:40Z"
     },
     {
       "name": "ai-development-playbook",
       "description": "Practical patterns for AI-native software delivery, review, QA, and automation.",
       "language": "",
-      "stars": 0,
-      "forks": 0,
       "pushed_at": "2026-09-29T07:10:36Z"
     },
     {
       "name": "windows-ai-dev-team",
       "description": "Turn one Windows PC into an AI-assisted development team.",
       "language": "",
-      "stars": 0,
-      "forks": 0,
       "pushed_at": "2026-09-29T07:10:30Z"
     }
   ],
   "events": [
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:45:58Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:45:54Z"
+    },
+    {
+      "type": "PushEvent",
+      "repo": "ryf-build",
+      "created_at": "2026-09-29T10:45:50Z"
+    },
     {
       "type": "PushEvent",
       "repo": "ryf-build",
@@ -79,28 +85,8 @@
       "type": "PushEvent",
       "repo": "ryf-build",
       "created_at": "2026-09-29T10:23:49Z"
-    },
-    {
-      "type": "PushEvent",
-      "repo": "ryf-build",
-      "created_at": "2026-09-29T09:45:58Z"
-    },
-    {
-      "type": "PushEvent",
-      "repo": "ryf-build",
-      "created_at": "2026-09-29T09:45:21Z"
-    },
-    {
-      "type": "PushEvent",
-      "repo": "ryf-build",
-      "created_at": "2026-09-29T09:44:18Z"
-    },
-    {
-      "type": "PushEvent",
-      "repo": "ryf-build",
-      "created_at": "2026-09-29T09:44:10Z"
     }
   ],
-  "generated_at": "2026-09-29T10:45:25.302982+00:00",
+  "generated_at": "2026-09-29T10:55:38.656598+00:00",
   "scope": "public-only"
 }
