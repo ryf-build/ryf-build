@@ -306,60 +306,79 @@ def terminal(profile):
 """
     return shell(body, 1120, 275, "RYF public system console")
 
-def signal(profile):
-    state_path = DATA / "signal.json"
-    state = json.loads(state_path.read_text()) if state_path.exists() else {
-        "position": "C3",
-        "actor": "system",
-        "issue": 0,
-    }
-    pos = state.get("position", "C3")
-    file_index = "ABCDEFGH".find(pos[0])
-    rank_index = "87654321".find(pos[1])
 
-    x0, y0, cell = 54, 50, 34
-    cells = []
-    for r in range(8):
-        for c in range(8):
-            fill = "#151a21" if (r + c) % 2 == 0 else "#0f1319"
-            cells.append(
-                f'<rect x="{x0+c*cell}" y="{y0+r*cell}" width="{cell}" height="{cell}" fill="{fill}"/>'
+def operating_model(profile):
+    repos = profile["repos"]
+    repo_names = [r["name"] for r in repos[:3]]
+    while len(repo_names) < 3:
+        repo_names.append("public-work")
+
+    stages = [
+        ("HUMAN INTENT", "Define goals, constraints, and authority", C["gold"]),
+        ("AI AGENTS", "Explore, draft, implement, and analyze", C["purple"]),
+        ("BUILD", "Turn intent into working software", C["blue"]),
+        ("VERIFY", "Review, test, and inspect evidence", C["green"]),
+        ("AUTOMATE", "Encode repeatable execution paths", C["purple"]),
+        ("SHIP", "Publish reusable public artifacts", C["gold"]),
+    ]
+
+    nodes = []
+    arrows = []
+    xs = [70, 250, 430, 610, 790, 970]
+    for i, (title, subtitle, color) in enumerate(stages):
+        x = xs[i]
+        nodes.append(
+            f'<rect x="{x}" y="112" width="126" height="96" rx="16" fill="#0d1117" stroke="{color}" stroke-opacity=".65"/>'
+            f'<circle cx="{x+18}" cy="132" r="4" fill="{color}"/>'
+            f'<text x="{x+16}" y="158" fill="{C["text"]}" font-size="14" font-weight="800" font-family="Segoe UI">{title}</text>'
+            f'<text x="{x+16}" y="180" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(subtitle[:26])}</text>'
+            f'<text x="{x+16}" y="196" fill="{C["muted"]}" font-size="9.8" font-family="Segoe UI">{esc(subtitle[26:52])}</text>'
+        )
+        if i < len(stages) - 1:
+            x1 = x + 126
+            x2 = xs[i+1]
+            arrows.append(
+                f'<path d="M{x1+8} 160 H{x2-10}" stroke="{C["grid"]}" stroke-width="2"/>'
+                f'<path d="M{x2-18} 154 L{x2-10} 160 L{x2-18} 166" fill="none" stroke="{color}" stroke-width="1.6"/>'
             )
-    px = x0 + file_index * cell + cell / 2
-    py = y0 + rank_index * cell + cell / 2
 
-    allowed = [("A1", C["gold"]), ("C3", C["purple"]), ("F5", C["green"]), ("H7", C["blue"])]
-    ports = []
-    for i, (name, color) in enumerate(allowed):
-        x = 508 + i * 132
-        ports.append(
-            f'<rect x="{x}" y="224" width="106" height="46" rx="10" fill="#0d1117" stroke="{color}" opacity=".92"/>'
-            f'<text x="{x+53}" y="253" text-anchor="middle" fill="{color}" font-size="18" font-weight="800" font-family="Segoe UI">{name}</text>'
+    principles = [
+        ("AUTHORITY", "Human decisions stay explicit", C["gold"]),
+        ("QUALITY", "Evidence before release", C["green"]),
+        ("BOUNDARY", "Production remains private", C["purple"]),
+        ("OUTPUT", "Reusable ideas become public", C["blue"]),
+    ]
+    principle_svg = []
+    for i, (k, v, color) in enumerate(principles):
+        x = 70 + i * 255
+        principle_svg.append(
+            f'<circle cx="{x}" cy="268" r="4" fill="{color}"/>'
+            f'<text x="{x+14}" y="272" fill="{C["text"]}" font-size="11.5" font-weight="700" font-family="Segoe UI">{k}</text>'
+            f'<text x="{x+14}" y="292" fill="{C["muted"]}" font-size="10.5" font-family="Segoe UI">{esc(v)}</text>'
         )
 
     body = f"""
-<text x="38" y="35" fill="{C['muted']}" font-size="11" font-family="Segoe UI" letter-spacing="2.2">ISSUE-DRIVEN INTERACTION / VISITOR SIGNAL</text>
-<g>{''.join(cells)}</g>
-<circle cx="{px:.1f}" cy="{py:.1f}" r="9" fill="{C['green']}" opacity=".22">
-  <animate attributeName="r" values="9;26;9" dur="1.9s" repeatCount="indefinite"/>
-  <animate attributeName="opacity" values=".25;0;.25" dur="1.9s" repeatCount="indefinite"/>
+<text x="36" y="42" fill="{C['muted']}" font-size="11.5" font-family="Segoe UI" letter-spacing="2.4">OPERATING MODEL / HOW I SHIP</text>
+<text x="36" y="80" fill="{C['text']}" font-size="28" font-weight="800" font-family="Segoe UI">HUMAN AUTHORITY → AI EXECUTION → VERIFIED OUTPUT</text>
+<text x="36" y="102" fill="{C['muted']}" font-size="12.5" font-family="Segoe UI">The profile is dynamic; the engineering model underneath it is deliberate.</text>
+
+{''.join(arrows)}
+{''.join(nodes)}
+
+<circle cx="210" cy="224" r="4" fill="{C['green']}">
+  <animate attributeName="cx" values="210;930;210" dur="7.2s" repeatCount="indefinite"/>
+  <animate attributeName="fill" values="{C['gold']};{C['purple']};{C['blue']};{C['green']};{C['gold']}" dur="7.2s" repeatCount="indefinite"/>
 </circle>
-<circle cx="{px:.1f}" cy="{py:.1f}" r="6" fill="{C['green']}"/>
 
-<text x="506" y="72" fill="{C['muted']}" font-size="10.5" font-family="Segoe UI" letter-spacing="1.5">CURRENT POSITION</text>
-<text x="506" y="128" fill="{C['text']}" font-size="54" font-weight="800" font-family="Segoe UI">{esc(pos)}</text>
-<text x="506" y="162" fill="{C['sub']}" font-size="14" font-family="Segoe UI">last moved by @{esc(state.get('actor', 'system'))}</text>
-<text x="506" y="190" fill="{C['muted']}" font-size="12" font-family="Segoe UI">Open a bounded public Issue to move the signal.</text>
-<text x="506" y="208" fill="{C['muted']}" font-size="11" font-family="Segoe UI">The Action validates one of four allowed coordinates, updates state, then closes the Issue.</text>
+<path d="M70 236H1040" stroke="{C['grid']}" opacity=".55"/>
+{''.join(principle_svg)}
 
-{''.join(ports)}
-
-<path d="M506 292H1032" stroke="{C['grid']}"/>
-<circle cx="518" cy="292" r="3" fill="{C['green']}">
-  <animate attributeName="cx" values="518;1020;518" dur="4.4s" repeatCount="indefinite"/>
-</circle>
+<text x="70" y="330" fill="{C['muted']}" font-size="10.5" font-family="Segoe UI">PUBLIC EXAMPLES</text>
+<text x="182" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[0])}</text>
+<text x="470" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[1])}</text>
+<text x="758" y="330" fill="{C['sub']}" font-size="11.5" font-family="monospace">{esc(repo_names[2])}</text>
 """
-    return shell(body, 1120, 340, "RYF issue-driven visitor signal")
+    return shell(body, 1120, 360, "RYF operating model")
 
 def main():
     profile = load_public()
@@ -368,7 +387,7 @@ def main():
         "hud.svg": hud(profile),
         "field.svg": activity_field(profile),
         "terminal.svg": terminal(profile),
-        "signal.svg": signal(profile),
+        "model.svg": operating_model(profile),
     }
     for name, svg in outputs.items():
         (OUT / name).write_text(svg, encoding="utf-8")
