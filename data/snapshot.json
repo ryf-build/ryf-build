@@ -103,8 +103,8 @@
       "releases_url": "https://api.github.com/repos/ryf-build/ryf-build/releases{/id}",
       "deployments_url": "https://api.github.com/repos/ryf-build/ryf-build/deployments",
       "created_at": "2026-09-29T07:03:13Z",
-      "updated_at": "2026-09-29T10:24:27Z",
-      "pushed_at": "2026-09-29T10:24:22Z",
+      "updated_at": "2026-09-29T10:25:34Z",
+      "pushed_at": "2026-09-29T10:25:29Z",
       "git_url": "git://github.com/ryf-build/ryf-build.git",
       "ssh_url": "git@github.com:ryf-build/ryf-build.git",
       "clone_url": "https://github.com/ryf-build/ryf-build.git",
@@ -477,6 +477,32 @@
     }
   ],
   "events": [
+    {
+      "id": "22470661760",
+      "type": "PushEvent",
+      "actor": {
+        "id": 309712661,
+        "login": "ryf-build",
+        "display_login": "ryf-build",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ryf-build",
+        "avatar_url": "https://avatars.githubusercontent.com/u/309712661?"
+      },
+      "repo": {
+        "id": 1394579092,
+        "name": "ryf-build/ryf-build",
+        "url": "https://api.github.com/repos/ryf-build/ryf-build"
+      },
+      "payload": {
+        "repository_id": 1394579092,
+        "push_id": 44909278355,
+        "ref": "refs/heads/main",
+        "head": "5f6470a6b279e53210aceffd64ee0bf2e447397b",
+        "before": "0699c07948a0cc1ba5660c302cb14d6e53c86bd0"
+      },
+      "public": true,
+      "created_at": "2026-09-29T10:25:30Z"
+    },
     {
       "id": "22470546762",
       "type": "PushEvent",
