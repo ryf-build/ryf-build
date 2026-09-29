@@ -1,30 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
-<title id="title">RYF — AI-native builder</title>
-<desc id="desc">Minimal dark profile banner for Ryf.</desc>
+<title id="title">RYF — Chess-themed AI-native builder</title>
+<desc id="desc">Dark chessboard profile banner for Ryf.</desc>
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0" stop-color="#0d1117"/>
-    <stop offset="0.55" stop-color="#15111f"/>
+    <stop offset="0.55" stop-color="#12101a"/>
     <stop offset="1" stop-color="#0d1117"/>
   </linearGradient>
-  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#a78bfa"/>
-    <stop offset="1" stop-color="#39d353"/>
+  <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#c8a951"/>
+    <stop offset="0.5" stop-color="#a78bfa"/>
+    <stop offset="1" stop-color="#c8a951"/>
   </linearGradient>
-  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-    <feGaussianBlur stdDeviation="20"/>
+  <pattern id="board" width="72" height="72" patternUnits="userSpaceOnUse">
+    <rect width="72" height="72" fill="#161b22"/>
+    <rect width="36" height="36" fill="#21262d"/>
+    <rect x="36" y="36" width="36" height="36" fill="#21262d"/>
+  </pattern>
+  <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="24"/>
   </filter>
 </defs>
 <rect width="1200" height="420" rx="34" fill="url(#bg)"/>
-<circle cx="945" cy="96" r="112" fill="#8b5cf6" opacity=".12" filter="url(#glow)"/>
-<circle cx="1060" cy="316" r="100" fill="#39d353" opacity=".10" filter="url(#glow)"/>
+<rect x="800" y="48" width="320" height="320" rx="26" fill="url(#board)" opacity=".38"/>
+<rect x="800" y="48" width="320" height="320" rx="26" fill="none" stroke="#30363d"/>
+<circle cx="1008" cy="205" r="112" fill="#8b5cf6" opacity=".10" filter="url(#soft)"/>
 <rect x="54" y="50" width="1092" height="320" rx="26" fill="none" stroke="#30363d"/>
-<text x="88" y="142" fill="#f0f6fc" font-size="82" font-weight="800" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="10">RYF</text>
-<rect x="90" y="167" width="430" height="5" rx="2.5" fill="url(#accent)"/>
-<text x="90" y="223" fill="#c9d1d9" font-size="28" font-weight="650" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="2">AI-NATIVE PRODUCT BUILDER</text>
-<text x="90" y="273" fill="#8b949e" font-size="22" font-family="Segoe UI, Inter, Arial, sans-serif">One developer. Multiple AI agents. Real systems.</text>
-<text x="90" y="322" fill="#8b949e" font-size="18" font-family="Segoe UI, Inter, Arial, sans-serif">BUILD · VERIFY · AUTOMATE · SHIP</text>
-<circle cx="1008" cy="206" r="49" fill="none" stroke="#8b5cf6" stroke-width="2" opacity=".72"/>
-<circle cx="1008" cy="206" r="34" fill="none" stroke="#39d353" stroke-width="2" opacity=".72"/>
-<path d="M987 206h42M1008 185v42" stroke="#f0f6fc" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+<text x="88" y="140" fill="#f0f6fc" font-size="78" font-weight="800" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="10">RYF</text>
+<text x="308" y="140" fill="#c8a951" font-size="72" font-family="Segoe UI Symbol, Segoe UI, Arial, sans-serif">♔</text>
+<rect x="90" y="164" width="462" height="5" rx="2.5" fill="url(#line)"/>
+<text x="90" y="218" fill="#f0f6fc" font-size="28" font-weight="650" font-family="Segoe UI, Inter, Arial, sans-serif" letter-spacing="2">AI-NATIVE PRODUCT BUILDER</text>
+<text x="90" y="270" fill="#c9d1d9" font-size="22" font-family="Segoe UI, Inter, Arial, sans-serif">STRATEGY · SYSTEMS · EXECUTION</text>
+<text x="90" y="316" fill="#8b949e" font-size="18" font-family="Segoe UI, Inter, Arial, sans-serif">Human authority stays explicit. AI moves fast.</text>
+<text x="960" y="238" text-anchor="middle" fill="#f0f6fc" font-size="108" font-family="Segoe UI Symbol, Segoe UI, Arial, sans-serif">♔</text>
 </svg>
