@@ -36,7 +36,15 @@ Clean-room public experiments in developer tooling, automation, AI-assisted engi
 
 ## ♟ Strategy / Systems / Execution
 
-<img src="https://www.gitskins.com/api/section/chess?username=ryf-build&theme=github-dark" alt="Animated chess replay" width="100%" />
+<div align="center">
+
+**Rotlewi – Rubinstein, Łódź 1907 · Rubinstein's Immortal**
+
+<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg" alt="Animated replay of Rotlewi vs Rubinstein, Lodz 1907" width="100%" />
+
+<sub>A real game, replayed move by move — culminating in Rubinstein's celebrated rook and queen-sacrifice attack.</sub>
+
+</div>
 
 ## Technical signal
 
