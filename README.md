@@ -42,7 +42,7 @@ Clean-room public experiments in developer tooling, automation, AI-assisted engi
 
 <img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg" alt="Animated replay of Rotlewi vs Rubinstein, Lodz 1907" width="100%" />
 
-<sub>A real game, replayed move by move — culminating in Rubinstein's celebrated rook and queen-sacrifice attack.</sub>
+<sub>A real game, replayed move by move — culminating in Rubinstein's celebrated rook and queen-sacrifice attack. · [PGN](https://github.com/ryf-build/ryf-build/blob/main/assets/rotlewi-rubinstein-1907.pgn)</sub>
 
 </div>
 
