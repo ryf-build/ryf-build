@@ -22,11 +22,17 @@ I work across product engineering, AI-assisted software delivery, automation, QA
 ### [Windows AI Dev Team](https://github.com/ryf-build/windows-ai-dev-team)
 A practical public companion for turning one Windows PC into a disciplined AI-assisted development environment with GitHub, self-hosted runners, automation, QA, and human-controlled execution.
 
+**Featured:** [Self-Hosted Runner Governance](https://github.com/ryf-build/windows-ai-dev-team/blob/main/docs/runner-governance.md)
+
 ### [AI Development Playbook](https://github.com/ryf-build/ai-development-playbook)
 Reusable patterns for AI-native software delivery, review, testing, independent verification, evidence, and safe automation.
 
+**Featured:** [Evidence-Gated AI Delivery](https://github.com/ryf-build/ai-development-playbook/blob/main/docs/evidence-gated-delivery.md)
+
 ### [RYF Labs](https://github.com/ryf-build/ryf-labs)
 Clean-room public experiments in developer tooling, automation, AI-assisted engineering, and reproducible technical-book companion projects.
+
+**Featured:** [Engineering Control Plane Lab](https://github.com/ryf-build/ryf-labs/tree/main/experiments/engineering-control-plane)
 
 ## ♟ Strategy / Systems / Execution
 
