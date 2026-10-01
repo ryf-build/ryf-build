@@ -26,15 +26,15 @@ AI-native product engineering across software delivery, automation, QA, infrastr
 
 ### Languages
 
-<img src="https://skillicons.dev/icons?i=ts,js,py,powershell,bash,go,rust,cpp,cs,java,lua&perline=11" alt="TypeScript, JavaScript, Python, PowerShell, Bash, Go, Rust, C++, C#, Java, Lua" />
+<img src="https://skillicons.dev/icons?i=ts,js,py,java,kotlin,cs,cpp,c,go,rust,dart,swift,php,powershell,bash,lua&perline=8&theme=dark" alt="TypeScript, JavaScript, Python, Java, Kotlin, C#, C++, C, Go, Rust, Dart, Swift, PHP, PowerShell, Bash, Lua" />
 
-<sub>TypeScript · JavaScript · Python · PowerShell · Bash · Go · Rust · C++ · C# · Java · Lua</sub>
+<sub>TypeScript · JavaScript · Python · Java · Kotlin · C# · C++ · C · Go · Rust · Dart · Swift · PHP · PowerShell · Bash · Lua</sub>
 
 <br/><br/>
 
 ### Web / Data / Platform
 
-<img src="https://skillicons.dev/icons?i=html,css,nodejs,react,nextjs,postgres,sqlite,cloudflare,docker,githubactions,git,linux,windows&perline=13" alt="HTML, CSS, Node.js, React, Next.js, PostgreSQL, SQLite, Cloudflare, Docker, GitHub Actions, Git, Linux, Windows" />
+<img src="https://skillicons.dev/icons?i=html,css,nodejs,react,nextjs,postgres,sqlite,cloudflare,docker,githubactions,git,linux,windows&perline=13&theme=dark" alt="HTML, CSS, Node.js, React, Next.js, PostgreSQL, SQLite, Cloudflare, Docker, GitHub Actions, Git, Linux, Windows" />
 
 <sub>HTML · CSS · Node.js · React · Next.js · PostgreSQL · SQLite · Cloudflare · Docker · GitHub Actions · Git · Linux · Windows</sub>
 
