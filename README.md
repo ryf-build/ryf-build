@@ -44,7 +44,7 @@ From product interfaces and backend services to CI, automation, developer toolin
 
 **Rotlewi – Rubinstein, Łódź 1907 · Rubinstein's Immortal**
 
-<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg" alt="Animated replay of Rotlewi vs Rubinstein, Lodz 1907" width="72%" />
+<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg?v=20261001-sumi" alt="Rotlewi vs Rubinstein, Łódź 1907 — animated monochrome chess study" width="72%" />
 
 <sub>A favorite study in coordination, timing, and execution. · [PGN](https://github.com/ryf-build/ryf-build/blob/main/assets/rotlewi-rubinstein-1907.pgn)</sub>
 
