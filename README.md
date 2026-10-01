@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/ryf-sumi-hero.svg?v=20261001-sumi-hero-v2" alt="Ryf — product engineering, AI systems, and automation" width="100%" />
-
-<sub>Product Engineering · AI Systems · Developer Infrastructure · Automation · Reliability · Technical Writing</sub>
+<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/ryf-sumi-hero.webp?v=20261001-sumi-hero-v3" alt="Ryf — product engineering, AI systems, and automation" width="100%" />
 
 </div>
 
