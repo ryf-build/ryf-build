@@ -1,34 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
   <title id="title">Ryf — product engineering, AI systems, and automation</title>
-  <desc id="desc">Monochrome sumi-ink inspired GitHub profile banner with editorial typography, code and chess motifs.</desc>
+  <desc id="desc">Restrained monochrome editorial GitHub profile banner inspired by sumi ink and chess notation.</desc>
 
   <rect width="1200" height="390" fill="#f6f1e7"/>
 
-  <!-- restrained paper / ink framing, matched to the chess study -->
-  <path d="M30 34 C216 23 441 37 1182 29" fill="none" stroke="#11110f" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
-  <path d="M24 354 C288 364 768 347 1181 356" fill="none" stroke="#11110f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
-  <path d="M45 50 C39 143 48 244 43 337" fill="none" stroke="#11110f" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+  <!-- paper frame: irregular, quiet, never crossing the content -->
+  <path d="M30 31 C292 23 644 33 1172 27" fill="none" stroke="#11110f" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+  <path d="M34 358 C347 368 771 350 1168 359" fill="none" stroke="#11110f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  <path d="M49 53 C43 145 49 254 45 336" fill="none" stroke="#11110f" stroke-width="3" stroke-linecap="round" opacity="0.16"/>
 
-  <!-- quiet ink movement -->
-  <path d="M70 190 C266 163 444 171 655 184 C788 192 914 183 1118 158" fill="none" stroke="#11110f" stroke-width="20" stroke-linecap="round" opacity="0.075"/>
-  <path d="M78 196 C300 183 506 193 724 206 C869 214 994 194 1124 178" fill="none" stroke="#11110f" stroke-width="7" stroke-linecap="round" opacity="0.13"/>
-  <path d="M771 108 C833 89 905 96 958 117 C995 132 1027 145 1088 139" fill="none" stroke="#11110f" stroke-width="9" stroke-linecap="round" opacity="0.12"/>
+  <!-- one controlled sumi gesture: background only -->
+  <path d="M696 126 C826 101 990 107 1131 133" fill="none" stroke="#11110f" stroke-width="29" stroke-linecap="round" opacity="0.055"/>
+  <path d="M721 143 C842 124 985 130 1114 149" fill="none" stroke="#11110f" stroke-width="7" stroke-linecap="round" opacity="0.12"/>
 
-  <!-- editorial identity -->
-  <text x="74" y="101" font-family="Georgia,'Times New Roman',serif" font-size="17" font-weight="700" letter-spacing="3.8" fill="#3e3a34">RYF-BUILD / GITHUB</text>
-  <text x="74" y="205" font-family="Georgia,'Times New Roman',serif" font-size="112" font-weight="700" letter-spacing="2" fill="#0c0c0b">RYF</text>
-  <text x="79" y="244" font-family="Georgia,'Times New Roman',serif" font-size="23" font-style="italic" fill="#34312c">Product engineering, AI systems, and the infrastructure around them.</text>
+  <!-- primary editorial block -->
+  <text x="76" y="94" font-family="Georgia,'Times New Roman',serif" font-size="17" font-weight="700" letter-spacing="3.7" fill="#3e3a34">RYF-BUILD / GITHUB</text>
+  <text x="72" y="207" font-family="Georgia,'Times New Roman',serif" font-size="116" font-weight="700" letter-spacing="1" fill="#0c0c0b">RYF</text>
+  <text x="78" y="247" font-family="Georgia,'Times New Roman',serif" font-size="22" font-style="italic" fill="#34312c">Product engineer building AI-assisted software and the systems around it.</text>
 
-  <line x1="79" y1="274" x2="650" y2="274" stroke="#11110f" stroke-width="1.5" opacity="0.62"/>
-  <text x="79" y="309" font-family="Georgia,'Times New Roman',serif" font-size="15" font-weight="700" letter-spacing="2.4" fill="#4a4640">CODE · STRATEGY · EXECUTION</text>
+  <line x1="78" y1="279" x2="653" y2="279" stroke="#11110f" stroke-width="1.5" opacity="0.62"/>
+  <text x="78" y="314" font-family="Georgia,'Times New Roman',serif" font-size="14" font-weight="700" letter-spacing="2.2" fill="#4a4640">PRODUCT ENGINEERING · AI SYSTEMS · AUTOMATION</text>
 
-  <!-- code + chess counterpoint -->
-  <text x="803" y="201" font-family="Consolas,'Courier New',monospace" font-size="62" font-weight="700" fill="#11110f">&lt;/&gt;</text>
-  <text x="1009" y="223" text-anchor="middle" font-family="DejaVu Sans,Segoe UI Symbol,Noto Sans Symbols,Arial Unicode MS,sans-serif" font-size="126" fill="#11110f">♞</text>
+  <!-- independent secondary column: no overlaps, no icon mashup -->
+  <line x1="742" y1="82" x2="742" y2="309" stroke="#11110f" stroke-width="1.4" opacity="0.32"/>
 
-  <!-- hand-painted separator -->
-  <path d="M934 91 C920 126 905 163 889 200 C877 228 866 248 849 279" fill="none" stroke="#11110f" stroke-width="6" stroke-linecap="round" opacity="0.78"/>
-  <path d="M947 88 C930 127 917 163 904 194" fill="none" stroke="#11110f" stroke-width="2.5" stroke-linecap="round" opacity="0.38"/>
+  <text x="786" y="101" font-family="Consolas,'Courier New',monospace" font-size="13" font-weight="700" letter-spacing="1.5" fill="#4a4640">OPERATING PRINCIPLES</text>
+  <text x="786" y="151" font-family="Consolas,'Courier New',monospace" font-size="24" fill="#11110f">&gt; build</text>
+  <text x="786" y="190" font-family="Consolas,'Courier New',monospace" font-size="24" fill="#11110f">&gt; verify</text>
+  <text x="786" y="229" font-family="Consolas,'Courier New',monospace" font-size="24" fill="#11110f">&gt; ship</text>
 
-  <text x="1120" y="309" text-anchor="end" font-family="Georgia,'Times New Roman',serif" font-size="13" letter-spacing="2" fill="#4a4640">BUILD · VERIFY · SHIP</text>
+  <line x1="786" y1="254" x2="1107" y2="254" stroke="#11110f" stroke-width="1.2" opacity="0.36"/>
+
+  <text x="786" y="286" font-family="Georgia,'Times New Roman',serif" font-size="14" font-style="italic" fill="#34312c">coordination · timing · execution</text>
+  <text x="1107" y="315" text-anchor="end" font-family="Georgia,'Times New Roman',serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#4a4640">23... Rd2!  ♞</text>
 </svg>
