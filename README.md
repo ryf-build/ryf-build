@@ -1,12 +1,8 @@
 <div align="center">
 
-<img src="https://www.gitskins.com/api/section/hero?username=ryf-build&theme=github-dark&style=aura" alt="Ryf — product engineer" width="100%" />
+<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/ryf-sumi-hero.svg?v=20261001-sumi-hero-v1" alt="Ryf — product engineering, AI systems, and automation" width="100%" />
 
-### Product engineer building AI-assisted software and the systems around it.
-
-From product interfaces and backend services to CI, automation, developer tooling, and operational workflows.
-
-**Product Engineering · AI Systems · Developer Infrastructure · Automation · Reliability · Technical Writing**
+<sub>Product Engineering · AI Systems · Developer Infrastructure · Automation · Reliability · Technical Writing</sub>
 
 </div>
 
@@ -57,4 +53,3 @@ A practical guide to building a disciplined AI-assisted engineering workflow on 
 ### [AIは毎回違う。だからSkillを書く。](https://github.com/ryf-build/ai-development-playbook)
 
 Patterns for reusable AI workflows, evaluation, evidence, and repeatable software delivery.
-
