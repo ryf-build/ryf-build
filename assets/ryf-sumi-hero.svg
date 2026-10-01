@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+  <title id="title">Ryf — product engineering, AI systems, and automation</title>
+  <desc id="desc">Monochrome sumi-ink inspired GitHub profile banner with editorial typography, code and chess motifs.</desc>
+
+  <rect width="1200" height="390" fill="#f6f1e7"/>
+
+  <!-- restrained paper / ink framing, matched to the chess study -->
+  <path d="M30 34 C216 23 441 37 1182 29" fill="none" stroke="#11110f" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+  <path d="M24 354 C288 364 768 347 1181 356" fill="none" stroke="#11110f" stroke-width="4" stroke-linecap="round" opacity="0.34"/>
+  <path d="M45 50 C39 143 48 244 43 337" fill="none" stroke="#11110f" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+
+  <!-- quiet ink movement -->
+  <path d="M70 190 C266 163 444 171 655 184 C788 192 914 183 1118 158" fill="none" stroke="#11110f" stroke-width="20" stroke-linecap="round" opacity="0.075"/>
+  <path d="M78 196 C300 183 506 193 724 206 C869 214 994 194 1124 178" fill="none" stroke="#11110f" stroke-width="7" stroke-linecap="round" opacity="0.13"/>
+  <path d="M771 108 C833 89 905 96 958 117 C995 132 1027 145 1088 139" fill="none" stroke="#11110f" stroke-width="9" stroke-linecap="round" opacity="0.12"/>
+
+  <!-- editorial identity -->
+  <text x="74" y="101" font-family="Georgia,'Times New Roman',serif" font-size="17" font-weight="700" letter-spacing="3.8" fill="#3e3a34">RYF-BUILD / GITHUB</text>
+  <text x="74" y="205" font-family="Georgia,'Times New Roman',serif" font-size="112" font-weight="700" letter-spacing="2" fill="#0c0c0b">RYF</text>
+  <text x="79" y="244" font-family="Georgia,'Times New Roman',serif" font-size="23" font-style="italic" fill="#34312c">Product engineering, AI systems, and the infrastructure around them.</text>
+
+  <line x1="79" y1="274" x2="650" y2="274" stroke="#11110f" stroke-width="1.5" opacity="0.62"/>
+  <text x="79" y="309" font-family="Georgia,'Times New Roman',serif" font-size="15" font-weight="700" letter-spacing="2.4" fill="#4a4640">CODE · STRATEGY · EXECUTION</text>
+
+  <!-- code + chess counterpoint -->
+  <text x="803" y="201" font-family="Consolas,'Courier New',monospace" font-size="62" font-weight="700" fill="#11110f">&lt;/&gt;</text>
+  <text x="1009" y="223" text-anchor="middle" font-family="DejaVu Sans,Segoe UI Symbol,Noto Sans Symbols,Arial Unicode MS,sans-serif" font-size="126" fill="#11110f">♞</text>
+
+  <!-- hand-painted separator -->
+  <path d="M934 91 C920 126 905 163 889 200 C877 228 866 248 849 279" fill="none" stroke="#11110f" stroke-width="6" stroke-linecap="round" opacity="0.78"/>
+  <path d="M947 88 C930 127 917 163 904 194" fill="none" stroke="#11110f" stroke-width="2.5" stroke-linecap="round" opacity="0.38"/>
+
+  <text x="1120" y="309" text-anchor="end" font-family="Georgia,'Times New Roman',serif" font-size="13" letter-spacing="2" fill="#4a4640">BUILD · VERIFY · SHIP</text>
+</svg>
