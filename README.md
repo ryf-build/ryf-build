@@ -4,35 +4,45 @@
 
 ### Build products. Design systems. Verify before shipping.
 
-I work across product engineering, AI-assisted software delivery, automation, QA, and operational engineering.
+AI-native product engineering across software delivery, automation, QA, infrastructure, and operations.
 
-<sub>Everything published here is intentionally public. Private source code, product internals, customer information, credentials, infrastructure details, and production configuration are not published.</sub>
+**Product Engineering · AI-Assisted Delivery · CI / QA · Automation · Operational Systems · Technical Publishing**
+
+<sub>Public by design. Private source code, customer information, credentials, internal infrastructure, and production configuration stay private.</sub>
 
 </div>
 
-## Public focus
-
-- **Product engineering** — turning ideas into usable software, not isolated demos
-- **AI-assisted delivery** — using AI for implementation and iteration while keeping human authority explicit
-- **Engineering systems** — automation, CI, self-hosted workflows, QA, and reproducible execution
-- **Technical publishing** — converting practical engineering work into reusable public knowledge
-
 ## Selected public work
 
-### [Windows AI Dev Team](https://github.com/ryf-build/windows-ai-dev-team)
-A practical public companion for turning one Windows PC into a disciplined AI-assisted development environment with GitHub, self-hosted runners, automation, QA, and human-controlled execution.
+| Project | Focus | Featured |
+| --- | --- | --- |
+| **[Windows AI Dev Team](https://github.com/ryf-build/windows-ai-dev-team)** | Windows, self-hosted CI, automation, QA, human-controlled AI workflows | [Self-Hosted Runner Governance](https://github.com/ryf-build/windows-ai-dev-team/blob/main/docs/runner-governance.md) |
+| **[AI Development Playbook](https://github.com/ryf-build/ai-development-playbook)** | AI-native delivery, review, verification, evidence, safe automation | [Evidence-Gated AI Delivery](https://github.com/ryf-build/ai-development-playbook/blob/main/docs/evidence-gated-delivery.md) |
+| **[RYF Labs](https://github.com/ryf-build/ryf-labs)** | Clean-room experiments, developer tooling, reproducible technical companions | [Engineering Control Plane Lab](https://github.com/ryf-build/ryf-labs/tree/main/experiments/engineering-control-plane) |
 
-**Featured:** [Self-Hosted Runner Governance](https://github.com/ryf-build/windows-ai-dev-team/blob/main/docs/runner-governance.md)
+## Engineering toolkit
 
-### [AI Development Playbook](https://github.com/ryf-build/ai-development-playbook)
-Reusable patterns for AI-native software delivery, review, testing, independent verification, evidence, and safe automation.
+<div align="center">
 
-**Featured:** [Evidence-Gated AI Delivery](https://github.com/ryf-build/ai-development-playbook/blob/main/docs/evidence-gated-delivery.md)
+### Languages
 
-### [RYF Labs](https://github.com/ryf-build/ryf-labs)
-Clean-room public experiments in developer tooling, automation, AI-assisted engineering, and reproducible technical-book companion projects.
+<img src="https://skillicons.dev/icons?i=ts,js,py,powershell,bash,go,rust,cpp,cs,java,lua&perline=11" alt="TypeScript, JavaScript, Python, PowerShell, Bash, Go, Rust, C++, C#, Java, Lua" />
 
-**Featured:** [Engineering Control Plane Lab](https://github.com/ryf-build/ryf-labs/tree/main/experiments/engineering-control-plane)
+<sub>TypeScript · JavaScript · Python · PowerShell · Bash · Go · Rust · C++ · C# · Java · Lua</sub>
+
+<br/><br/>
+
+### Web / Data / Platform
+
+<img src="https://skillicons.dev/icons?i=html,css,nodejs,react,nextjs,postgres,sqlite,cloudflare,docker,githubactions,git,linux,windows&perline=13" alt="HTML, CSS, Node.js, React, Next.js, PostgreSQL, SQLite, Cloudflare, Docker, GitHub Actions, Git, Linux, Windows" />
+
+<sub>HTML · CSS · Node.js · React · Next.js · PostgreSQL · SQLite · Cloudflare · Docker · GitHub Actions · Git · Linux · Windows</sub>
+
+<br/>
+
+<sub>No repository-weighted percentages. This is a capability map, not a language-share chart.</sub>
+
+</div>
 
 ## ♟ Strategy / Systems / Execution
 
@@ -40,19 +50,11 @@ Clean-room public experiments in developer tooling, automation, AI-assisted engi
 
 **Rotlewi – Rubinstein, Łódź 1907 · Rubinstein's Immortal**
 
-<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg" alt="Animated replay of Rotlewi vs Rubinstein, Lodz 1907" width="100%" />
+<img src="https://raw.githubusercontent.com/ryf-build/ryf-build/main/assets/rotlewi-rubinstein-1907.svg" alt="Animated replay of Rotlewi vs Rubinstein, Lodz 1907" width="72%" />
 
-<sub>A real game, replayed move by move — culminating in Rubinstein's celebrated rook and queen-sacrifice attack. · [PGN](https://github.com/ryf-build/ryf-build/blob/main/assets/rotlewi-rubinstein-1907.pgn)</sub>
+<sub>A real game, replayed move by move — culminating in Rubinstein's celebrated attacking combination. · [PGN](https://github.com/ryf-build/ryf-build/blob/main/assets/rotlewi-rubinstein-1907.pgn)</sub>
 
 </div>
-
-## Technical signal
-
-<img src="https://www.gitskins.com/api/section/stack?username=ryf-build&theme=github-dark" alt="Technology stack" width="100%" />
-
-<img src="https://www.gitskins.com/api/section/stats?username=ryf-build&theme=github-dark" alt="GitHub stats" width="100%" />
-
-<img src="https://www.gitskins.com/api/section/heatmap?username=ryf-build&theme=github-dark" alt="Contribution activity" width="100%" />
 
 ## Writing
 
@@ -63,5 +65,5 @@ GitHub、self-hosted runners、automation、QA、human-controlled AI workflows �
 ---
 
 <p align="center">
-  <sub>Public by design. Private work stays private.</sub>
+  <sub>Build useful systems. Make the evidence visible. Keep private work private.</sub>
 </p>
